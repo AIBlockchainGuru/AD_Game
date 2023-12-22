@@ -8,20 +8,36 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Track */
+::-webkit-scrollbar-track {
+  background: #2f2121;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb {
+  background: #801e13;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d33434;
+}
+
+/* Horizontal scrollbar */
+::-webkit-scrollbar:horizontal {
+  height: 0px;
+}
+
+.hero {
+  background-image: url("../../public/assets/adnetwork-2.jpg");
+}
+
+.about {
+  background-image: url("../../public/assets/adnetwork-5-shadow.png");
+  box-shadow:  4px -500px 0 rgba(0, 0, 0, 0.2) inset, 0 6px -10px 0 rgba(0, 0, 0, 0.19) inset;
 }

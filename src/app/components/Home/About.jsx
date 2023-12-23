@@ -1,4 +1,4 @@
-import { styles } from '@/app/utils/styles'
+import { styles } from '../../utils/styles'
 import React from 'react'
 
 function About() {

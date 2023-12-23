@@ -4,7 +4,8 @@ import bgImage from '../../../../public/assets/adnetwork-logo.png'
 import Header from '../Header';
 import Image from 'next/image';
 import { Divider } from '@nextui-org/react';
-import { styles } from '@/app/utils/styles';
+import { styles } from '../../utils/styles'
+import Link from 'next/link';
 
 const Hero = () => {
   return (
@@ -24,7 +25,9 @@ const Hero = () => {
 
           <Divider className='w-[90%] bg-slate-50 h-[0.5px] mb-5'/>
 
-          <button className={`${styles.button}`}>Sign Up</button>
+          <Link href={'/sign-up'}>
+            <button className={`${styles.button}`}>Sign Up</button>
+          </Link>
         </div>
       </div>
   );

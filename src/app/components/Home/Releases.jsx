@@ -1,8 +1,8 @@
 'use client'
 import React from 'react';
-import { styles } from '@/app/utils/styles';
+import { styles } from '../../utils/styles'
 import Image from 'next/image';
-import { releaseItems } from '@/app/utils/releaseItems';
+import { releaseItems } from '../../utils/releaseItems';
 import spiderman from '../../../../public/assets/adnetwork-9.jpeg'
 import cod from '../../../../public/assets/adnetwork-6.jpg'
 import { Divider } from '@nextui-org/react';

@@ -28,7 +28,6 @@ const navOptions = [
 ]
 
 function Header() {
-  console.log(navOptions)
   return (
     <nav className="p-4 absolute top-5 w-[90%] m-auto">
       <div className="container mx-auto flex items-center justify-between">
@@ -59,4 +58,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;

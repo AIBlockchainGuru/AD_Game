@@ -6,7 +6,7 @@ import tombRaider from '../../../../public/assets-compressed/adnetwork-10.jpg'
 import forzaSeries from '../../../../public/assets-compressed/adnetwork-1.png'
 import deathStranding from '../../../../public/assets-compressed/adnetwork-3.jpg'
 import { Divider } from '@nextui-org/react'
-import { styles } from '@/app/utils/styles'
+import { styles } from '../../utils/styles'
 
 function Giveaways() {
   return (
@@ -47,7 +47,7 @@ function Giveaways() {
                 <input 
                     type="text" 
                     placeholder='example@email.com'
-                    className={`bg-transparent w-[30vw] text-white py-1 px-4 border-slate-50 border-small rounded-none text-lg`}
+                    className={`${styles.input} w-[30vh] bg-transparent`}
                 />
                 <button className={styles.button}>
                     Stay Updated

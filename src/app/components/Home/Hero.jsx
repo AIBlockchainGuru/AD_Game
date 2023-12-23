@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import bgImage from '../../../../public/assets/adnetwork-logo.png'
+import logo from '../../../../public/assets/adnetwork-logo.png'
 import Header from '../Header';
 import Image from 'next/image';
 import { Divider } from '@nextui-org/react';
@@ -13,7 +13,7 @@ const Hero = () => {
         <Header />
         <div className="items-center text-white flex flex-col justify-center m-auto">
           <Image 
-            src={bgImage}
+            src={logo}
             width={300}
             height={300}
             className='mt-4 p-4'
@@ -23,10 +23,10 @@ const Hero = () => {
             <p className="text-lg text-center mb-8">Wecome to AD Network, where gaming becomes a lifestyle. Unleash your inner gamer and dive into our vast universe of games, memberships, and vouchers.</p>
           </div>
 
-          <Divider className='w-[90%] bg-slate-50 h-[0.5px] mb-5'/>
+          <Divider className='w-[90%] bg-slate-50 h-[0.5px] mt-4 mb-5'/>
 
           <Link href={'/sign-up'}>
-            <button className={`${styles.button}`}>Sign Up</button>
+            <button className={`${styles.button} mt-10`}>Sign Up</button>
           </Link>
         </div>
       </div>

@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-      <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
+      <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat flex flex-col items-center hero">
         <Header />
         <div className="items-center text-white flex flex-col justify-center m-auto">
           <Image 

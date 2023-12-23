@@ -34,10 +34,13 @@
 }
 
 .hero {
-  background-image: url("../../public/assets/adnetwork-2.jpg");
+  background: url("../../public/assets/adnetwork-2.jpg");
+  background-size: auto;
 }
 
 .about {
-  background-image: url("../../public/assets/adnetwork-5-shadow.png");
+  background: url("../../public/assets/adnetwork-5-shadow.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   box-shadow:  4px -500px 0 rgba(0, 0, 0, 0.2) inset, 0 6px -10px 0 rgba(0, 0, 0, 0.19) inset;
 }

@@ -12,7 +12,7 @@ function About() {
         <div className="h-[10vh] flex flex-col justify-center">
             <h1 className='text-center text-4xl m-auto'>Become Part of Trusted Network</h1>
         </div>
-        <div className="h-[90vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center about">
+        <div className="h-[90vh] w-[100vw] flex flex-col items-center about">
             <div className="flex w-[90%] m-auto justify-between">
                 <div className="w-[45%]">
                     <h1 className='text-3xl text-[800] mb-4' style={{ fontWeight: 'bolder'}}>ABOUT AD NETWORK</h1>

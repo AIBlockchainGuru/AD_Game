@@ -74,7 +74,14 @@
   background: #00171F;
 }
 
-html {
-  background: #00171F;
-  
+.giveaway{
+  background: url("../../public/assets/adnetwork-11.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.giveaway--shade{
+  background: #000;
+  opacity: 0.8;
 }

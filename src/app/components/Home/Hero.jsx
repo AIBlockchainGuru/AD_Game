@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Hero = () => {
   return (
-      <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat flex flex-col items-center hero">
+      <div className="w-[100vw] 1100px:h-[100vh] bg-cover bg-center bg-no-repeat flex flex-col items-center hero">
         <Header />
         <div className="items-center text-white flex flex-col justify-center m-auto">
           <Image 
@@ -26,7 +26,7 @@ const Hero = () => {
           <Divider className='w-[90%] bg-slate-50 h-[0.5px] mt-4 mb-5'/>
 
           <Link href={'/sign-up'}>
-            <button className={`${styles.button} mt-10`}>Sign Up</button>
+            <button className={`${styles.button} mt-10 mb-3`}>Sign Up</button>
           </Link>
         </div>
       </div>

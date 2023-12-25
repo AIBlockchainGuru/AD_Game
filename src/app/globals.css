@@ -44,3 +44,10 @@
   background-size: cover;
   box-shadow:  4px -500px 0 rgba(0, 0, 0, 0.2) inset, 0 6px -10px 0 rgba(0, 0, 0, 0.19) inset;
 }
+
+.shop {
+  background: url("../../public/assets/adnetwork-4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

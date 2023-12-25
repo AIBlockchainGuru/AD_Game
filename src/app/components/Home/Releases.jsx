@@ -11,7 +11,7 @@ import { Image } from '@nextui-org/react';
 function Releases() {
   return (
     <div className='w-[100vw] flex flex-col justify-center items-center'>
-        <div className="h-[10vh] w-[100vw] flex flex-col justify-center bg-black">
+        <div className="w-[100vw] p-3 flex flex-col justify-center bg-black">
             <h1 className='text-center text-4xl m-auto uppercase'>All the Latest Triple A Releases</h1>
         </div>
         <div className="w-[100vw] flex flex-col items-center">
@@ -42,7 +42,7 @@ function Releases() {
                 </div>
             </div>
 
-            <div className={`flex w-[90%] 1100px:w-[75%] flex-col 1100px:flex-row mt-10 p-4 bg-transparent m-auto`} style={{ flexDirection: `row-reverse`}}>
+            <div className={`flex w-[90%] 1100px:w-[75%] flex-col 1100px:flex-row-reverse mt-5 gap-7 p-4 bg-transparent m-auto`}>
                 {/* Left Side (Image) */}
                 <div className="w-[100%] 1100px:w-[50%] mx-3">
                     <Image 

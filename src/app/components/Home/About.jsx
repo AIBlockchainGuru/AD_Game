@@ -1,5 +1,5 @@
 import { styles } from '../../utils/styles'
-import React from 'react'
+import React from 'react';
 
 function About() {
 
@@ -8,11 +8,11 @@ function About() {
     const DESCRIPTION_TWO = "Experience the story of Basim, a cunning street thief with nightmarish visions, seeking answers and justice as he navigates the bustling streets of ninth-century Baghdad.";
 
   return (
-    <div className='w-[100vw] h-[100vh] flex flex-col justify-center items-center  bg-black'>
-        <div className="h-[10vh] flex flex-col justify-center">
+    <div className='w-[100vw]  flex flex-col justify-center items-center  bg-black'>
+        <div className="flex flex-col justify-center p-3">
             <h1 className='text-center text-4xl m-auto'>Become Part of Trusted Network</h1>
         </div>
-        <div className="h-[90vh] w-[100vw] flex flex-col items-center about">
+        <div className="w-[100vw] h-[80vh] 1100px:h-[90vh] flex flex-col items-center about pb-5">
             <div className="flex w-[90%] m-auto justify-between">
                 <div className="w-[45%]">
                     <h1 className='text-3xl text-[800] mb-4' style={{ fontWeight: 'bolder'}}>ABOUT AD NETWORK</h1>

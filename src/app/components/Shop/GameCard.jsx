@@ -6,10 +6,11 @@ import { styles } from '../../utils/styles';
 
 function GameCard({game}) {
     const {id, title, genres, price, available, thumbnailUrl} = game;
-    console.log(thumbnailUrl)
   return (
     <>
-        <div className="w-[100%] flex flex-col mb-4">
+        <div 
+            className="w-[100%] flex flex-col mb-4"
+        >
             <Image
                 alt="Card background"
                 className="object-cover rounded-none w-[85%] h-[30vh]"

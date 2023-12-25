@@ -51,3 +51,30 @@
   background-size: cover;
   background-attachment: fixed;
 }
+
+.game {
+  z-index: 2;
+  background: #3b3a3a81;
+  opacity: 0.7;
+}
+
+.game--innercard {
+  z-index: 5;
+  box-shadow: 0px 0px 50vw #242222d8 inset;
+}
+
+.support {
+  background: url("../../public/assets/adnetwork-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.news {
+  background: #00171F;
+}
+
+html {
+  background: #00171F;
+  
+}

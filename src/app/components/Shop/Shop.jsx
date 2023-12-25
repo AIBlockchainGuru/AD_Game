@@ -32,7 +32,7 @@ function Shop() {
                         type='text'
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        placeholder="   Search"
+                        placeholder="   Filter"
                         className={`${styles.input} bg-transparent  placeholder:text-white placeholder:left-5`} 
                     />
                     <FaFilter

@@ -76,17 +76,21 @@ function Page() {
             <h1 className='text-xl uppercase font-bold pb-8'>giveaway games for this week</h1>
 
             <div className='flex flex-col md:flex-row gap-6 m-auto pb-6 justify-center md:justify-start'>
-                {
-                    giveawayGames.map((game) => (
+                {giveawayGames.map((game) => (
+                    <div key={game.id} className='relative'>
                         <Image 
                             src={game.thumbnailUrl}
                             alt=''
-                            width={320}
-                            height={320}
+                            width={380}
+                            height={275}
                             className='w-[380px] h-[275px] border-[0.5px] border-white rounded-xl'
                         />
-                    ))
-                }
+                        <div className="absolute w-[380px] h-[275px] top-0 left-0 rounded-2xl bg-black bg-opacity-25 "></div>
+                        <div className='absolute bottom-0 left-0 p-4'>
+                            <p className='text-lg uppercase font-bold'>{game.title}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
         

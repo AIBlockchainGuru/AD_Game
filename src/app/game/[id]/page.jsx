@@ -68,7 +68,7 @@ function Page({params}) {
             <Header />
         </h1>
         <div className='z-3 absolute top-[50vh] w-[90%] left-[5%] p-4 m-auto'>
-            <div className='w-[90%] h-[60vh] z-4 m-auto game--innercard'>
+            <div className='w-[90%] relative h-[60vh] z-4 m-auto text-center game--innercard'>
                 <Image 
                     src={cardUrl}
                     alt=''
@@ -79,7 +79,8 @@ function Page({params}) {
                         boxShadow: '0px 0px 100px white', // Adjust the shadow values as needed
                     }}
                 />
-                <h1 className='w-[90%] text-center z-5 absolute top-[10vh] p-5 m-auto uppercase text-2xl font-bold'>{title}</h1>
+                <div className='absolute top-0 w-[100%] h-[130vh] bg-black bg-opacity-45'></div>
+                <h1 className='w-[90%] text-center z-5 absolute top-[10vh] left-auto p-auto m-auto uppercase text-3xl font-bold'>{title}</h1>
                 <div className='w-90% flex items-center absolute top-[15vh] p-5 m-auto gap-4 justify-around'>
                     <div className="w-[40%] ml-auto">
                         <Image 
@@ -107,7 +108,7 @@ function Page({params}) {
                     </div>
                 </div>
                 
-                <div className="w-[90.5%] flex flex-col gap-2 absolute top-[68vh] left-[4.75%] z-5 p-5 m-auto">
+                <div className="w-[100%] flex flex-col gap-2 absolute top-[68vh] left-[] z-5  m-auto">
                     <div className='w-[100%] flex p-2 bg-[#00171F] m-auto'>
                         {
                             sections.map((section, index) => (
@@ -129,7 +130,7 @@ function Page({params}) {
 
                     {
                         activeSection === 0 && (
-                            <div className='w-[80%] m-auto p-2 bg-black bg-opacity-50 text-justify'>
+                            <div className='w-[80%] m-auto p-2 text-justify'>
                                 {games[1].description.map((description) => (
                                     <div>
                                         <p>{description}</p>

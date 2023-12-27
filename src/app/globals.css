@@ -85,3 +85,7 @@
   background: #000;
   opacity: 0.8;
 }
+
+.account {
+  box-shadow: 0 0 100px white;
+}

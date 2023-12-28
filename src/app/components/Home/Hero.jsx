@@ -11,12 +11,12 @@ const Hero = () => {
   return (
       <div className="w-[100vw] 1100px:h-[100vh] bg-cover bg-center bg-no-repeat flex flex-col items-center hero">
         <Header />
-        <div className="items-center text-white flex flex-col justify-center m-auto">
+        <div className="items-center text-white flex flex-col justify-evenly m-auto">
           <Image 
             src={logo}
             width={300}
             height={300}
-            className='mt-4 p-4'
+            className='mt-12 p-4'
           />
 
           <div className="ṭext-center w-[90%] m-auto">

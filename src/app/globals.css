@@ -89,3 +89,11 @@
 .account {
   box-shadow: 0 0 100px white;
 }
+
+@media only screen and (max-width: 600px) {
+  .hero {
+    background: url("../../public/assets/adnetwork-2.jpg");
+    background-size: auto 100vh;
+    background-position: center;
+  }
+}

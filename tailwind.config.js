@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        Staatliches: ["var(--font-Staatliches)"],
+        Manrope: ["var(--font-Manrope)"],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

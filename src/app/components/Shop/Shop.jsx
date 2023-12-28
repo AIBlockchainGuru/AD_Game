@@ -45,13 +45,13 @@ function Shop() {
         </div>
 
         <div className="mt-12">
-            <h2 className={`${staatliches.className} uppercase text-2xl 800px:text-3xl`}>Latest</h2>
+            <h2 className={`${staatliches.className} ml-6 800px:ml-0 uppercase text-2xl 800px:text-3xl`}>Latest</h2>
         </div>
 
-        <div className="flex flex-row flex-wrap justify-center">
+        <div className="flex flex-row ml-6 800px:ml-0 flex-wrap justify-center">
             {
                 games.map((game) => (
-                    <div className="w-[25%] ">
+                    <div className="w-[50%] 800px:w-[33.33%] 1100px:w-[25%]">
                         <GameCard game={game} />
                     </div>
                 ))

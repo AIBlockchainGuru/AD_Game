@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Header from '../components/News-and-Updates/Header'
 import Image from 'next/image'

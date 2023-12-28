@@ -96,4 +96,14 @@
     background-size: auto 100vh;
     background-position: center;
   }
+  
+}
+
+@media only screen and (max-width: 1100px) {
+  .shop {
+    background: url("../../public/assets/adnetwork-4.jpg");
+    background-attachment: fixed;
+    background-size: auto 100vh;
+    background-position: center;
+  }
 }

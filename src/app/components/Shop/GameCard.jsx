@@ -28,7 +28,7 @@ function GameCard({game}) {
                         <p className={`${staatliches.className} text-xl`}>{price + ' RS'}</p>    
                     </div>
                     <div>
-                        <p className={`${staatliches.className} font-bold text-xl uppercase`}>
+                        <div className={`${staatliches.className} font-bold text-xl uppercase`}>
                             {available ? (
                                 <div className='flex gap-1'>
                                     <MdDone 
@@ -42,7 +42,7 @@ function GameCard({game}) {
                                     /> <p className='text-red-600'>Out of Stock</p>
                                 </div>
                             )}
-                        </p>
+                        </div>
                     </div>
                 </div>
                 <div className='text-center mt-4'>

@@ -1,4 +1,4 @@
-export const games = [
+const games = [
     {
         id: 'ADNG00111',
         title: 'Cyberpunk 2077: Phantom Liberty',
@@ -28,7 +28,6 @@ export const games = [
             }
         ],
         thumbnailUrl: '/assets/adnetwork-9.jpeg',
-        cardUrl: '/assets/adnetwork-8.jpg',
         price: '2000',
         available: true
     },
@@ -87,3 +86,8 @@ export const games = [
         available: true
     },
 ]
+
+const id = 'ADNG00112';
+
+const game = games.filter((game) => game.id === id);
+console.log(game)

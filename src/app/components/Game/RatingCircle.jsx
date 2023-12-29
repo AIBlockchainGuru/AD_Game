@@ -1,4 +1,5 @@
 
+import { staatliches } from "../../utils/font";
 
 const RatingCircle = ({ rating }) => {
     
@@ -16,24 +17,8 @@ const RatingCircle = ({ rating }) => {
     const circleStyle = `w-[70px] h-[70px] rounded-full flex items-center justify-center relative ${calculateColor()}`;
   
     return (
-      <div className={circleStyle}>
-        <span className="text-white text-4xl font-bold z-10">{rating}</span>
-        <svg
-          className="absolute z-0"
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle
-            cx="50%"
-            cy="50%"
-            r="45%"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="10%"
-          />
-        </svg>
-      </div>
+      <div className={`${staatliches.className} text-6xl font-bold 800px:w-[220px] w-[190px] h-[190px] 800px:h-[220px] border-opacity-40 border-[#4E43B1] rounded-full border-[16px] flex items-center justify-center text-center`}>{rating}</div>
+
     );
 };
 

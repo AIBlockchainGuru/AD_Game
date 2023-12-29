@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { styles } from '../utils/styles';
 import Footer from '../components/Home/Footer';
 import Image from 'next/image';
+import { staatliches } from '../utils/font';
 
 const navOptions = [
     {
@@ -37,6 +38,7 @@ const navOptions = [
 function Page() {
 
     const [selected, setSelected] = useState(0);
+    const [toggle, setToggle] = useState(0);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [location, setLocation] = useState('');
@@ -62,9 +64,9 @@ function Page() {
             <Header />
         </div>
 
-        <div className='w-[90%] flex flex-row p-6 mb-8 m-auto rounded-xl account'>
-            <div className="w-[50%] border-r-[0.5px] border-white">
-                <h1 className='w-[90%] uppercase pt-12 pb-6 text-2xl text-[32px] font-bold m-auto'>Account Management</h1>
+        <div className='w-full 800px:w-[90%] flex flex-row p-6 mb-8 m-auto rounded-xl account'>
+            <div className="w-full 800px:w-[50%] 800px:border-r-[0.5px] border-white">
+                <h1 className={`${staatliches.className} w-[90%] uppercase 800px:text-left text-center pt-12 pb-6 text-2xl text-[32px] font-bold m-auto`}>Account Management</h1>
                 <div className='w-[90%] flex flex-col m-auto mt-10'>
                 {
                     navOptions.map((nav, index) => (
@@ -82,7 +84,7 @@ function Page() {
                 }
                 </div>
             </div>
-            <div className="w-[50%] h-full">
+            <div className="w-full hidden 800px:block 800px:w-[50%] h-full">
                 {
                     selected === 0 && (
                         <>

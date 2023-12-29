@@ -9,7 +9,6 @@ import Loader from "../components/Loader/Loader";
 import { staatliches } from "../utils/font";
 import { MdDone, MdClose } from "react-icons/md";
 
-
 const sections = [
   {
     title: "Description",
@@ -74,7 +73,7 @@ function Page() {
               alt=""
               width={1024}
               height={1024}
-              className="w-[100%] h-full object-stretch z-1"
+              className="w-[100%] h-full 800px:object-stretch object-center z-1"
               quality={100}
               sizes="100vw, 200vh"
             />
@@ -82,8 +81,8 @@ function Page() {
           <div className="w-[90%] m-auto">
             <Header />
           </div>
-          <div className="w-[100vw] relative top-[-40vh] z-30">
-            <div className="w-[85vw] m-auto">
+          <div className="w-[100vw] relative 800px:top-[-40vh] z-30">
+            <div className="1100px:w-[85vw] m-auto">
               <Image
                 src={cardUrl}
                 width={1048}
@@ -91,18 +90,19 @@ function Page() {
                 alt=""
                 quality={100}
                 sizes="90vw, 150vh"
-                className="w-[100%] rounded-2xl"
+                className="w-[100%] 800px:h-[150vh] h-[200vh] object-stretch rounded-2xl"
               />
-              <div className="absolute top-0 w-[85vw] h-[130vh] bg-black bg-opacity-80 rounded-xl"></div>
+              <div className="absolute top-0 1100px:w-[85vw] w-[100vw] 800px:h-[150vh] h-[200vh] bg-black bg-opacity-80 rounded-xl"></div>
             </div>
-            <div className="w-[70vw] m-auto absolute pl-32 top-[10vh]">
-            <h1
-                  className={` ${staatliches.className}  text-left  m-auto uppercase text-3xl font-bold`}
+            <div className="w-[70vw] m-auto absolute pl-5 1100px:pl-32 top-[10vh] 800px:left-[9vw]">
+              <div className="w-[100%] m-auto">
+                <h1
+                  className={` ${staatliches.className} text-left mb-12  m-auto uppercase text-3xl font-bold`}
                 >
                   {title}
                 </h1>
-                <div className="flex gap-10">
-                  <div className="w-[50%]">
+                <div className="flex flex-col 800px:flex-row gap-10 mb-12">
+                  <div className="1100px:w-[50%] w-[90vw]">
                     <Image
                       src={thumbnailUrl}
                       alt=""
@@ -110,62 +110,139 @@ function Page() {
                       height={380}
                       className=""
                       quality={100}
+                      sizes="90vw, 150vh"
                       className="w-[100%] h-[380px] rounded-2xl "
                     />
                   </div>
-                  <div className="w-[50%]">
-                    <p className={`${staatliches.className} text-xl text-gray-400 font-bold text-left`}>
+                  <div className="w-[90vw] 800px:w-[50%] flex 800px:flex-col justify-between">
+                    <div>
+                    <p
+                      className={`${staatliches.className} 800px:text-xl text-sm text-gray-400 font-bold text-left`}
+                    >
                       OUR PRICE
                     </p>
-                    <p className={`${staatliches.className} font-bold text-9xl text-left mt-5`}>
+                    <p
+                      className={`${staatliches.className} font-bold 800px:text-9xl text-6xl text-left mt-5`}
+                    >
                       {price}
-                      <span className={`${staatliches.className} text-3xl text-gray-400 ml-1 text-left`}>
+                      <span
+                        className={`${staatliches.className} 800px:text-3xl text-sm text-gray-400 ml-1 text-left`}
+                      >
                         RS
                       </span>
                     </p>
+                    </div>
                     <div className="flex flex-col items-end">
-                        <div className={`${staatliches.className} font-bold text-xl uppercase`}>
-                            {available ? (
-                                <div className='flex gap-1'>
-                                    <MdDone 
-                                        className='w-[24px] h-[24px] text-[#7C8BD0]'
-                                    /> <p className='text-[#7C8BD0]'>In Stock</p>
-                                </div>
-                            ) : (
-                                <div className='flex gap-1'>
-                                    <MdClose
-                                        className='w-[24px] h-[24px]  text-red-600'
-                                    /> <p className='text-red-600'>Out of Stock</p>
-                                </div>
-                            )}
-                        </div>
-
-                    <div className="text-right">
-                      <label
-                        htmlFor="quantity"
-                        className={`${staatliches.className} uppercase text-xl text-gray-400 mr-2`}
-                      >
-                        QTY:
-                      </label>
-                      <input
-                        type="text"
-                        name="Quantity"
-                        id="quantity"
-                        className={`${styles.input} mt-1 w-[40%] bg-transparent text-right`}
-                      />
-                    </div>
-                    <br />
-                    <div className="w-[100%] text-right">
-                      <button
-                        className={`${styles.button} w-[80%] mt-3 text-center`}
-                      >
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
                     
+                      <div
+                        className={`${staatliches.className} font-bold 800px:text-xl uppercase`}
+                      >
+                        {available ? (
+                          <div className="flex gap-1">
+                            <MdDone className="w-[24px] h-[24px] text-[#7C8BD0]" />{" "}
+                            <p className="text-[#7C8BD0]">In Stock</p>
+                          </div>
+                        ) : (
+                          <div className="flex gap-1">
+                            <MdClose className="w-[24px] h-[24px] text-red-600" />{" "}
+                            <p className="text-red-600">Out of Stock</p>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="text-right">
+                        <label
+                          htmlFor="quantity"
+                          className={`${staatliches.className} uppercase 800px:text-xl text-gray-400 mr-2`}
+                        >
+                          QTY:
+                        </label>
+                        <input
+                          type="text"
+                          name="Quantity"
+                          id="quantity"
+                          className={`text-white py-1 px-4 border-slate-50 border-small rounded-none text-lg h-6 800px:h-9 800px:mt-1 800px:w-[40%] w-[30%] bg-transparent text-right`}
+                        />
+                      </div>
+                      <br />
+                      <div className="w-[100%] text-right">
+                        <button
+                          className={`bg-transparent text-white py-1 800px:px-4 px-9 border-slate-50 border-small rounded-none text-sm 800px:text-lg 800px:w-[85%] 800px:mt-3 w-[60%] text-center`}
+                        >
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+              <div className="800px:w-[85vw] w-[100vw] absolute 800px:left-[-1.5vw] left-0 flex flex-col gap-2">
+                <div className="w-[100%] flex py-2 bg-black">
+                  {sections.map((section, index) => (
+                    <div
+                      key={section.title}
+                      className={`${
+                        staatliches.className
+                      } w-[90%] text-center cursor-pointer ${
+                        index === activeSection ? "border-b-2 border-white" : ""
+                      }`}
+                    >
+                      <p
+                        className={`uppercase text-2xl ${
+                          section.isSelected ? "text-white" : "text-gray-400"
+                        }`}
+                        onClick={() => {
+                          sections[activeSection].isSelected = false;
+                          setActiveSection(index);
+                          sections[index].isSelected = true;
+                        }}
+                      >
+                        {section.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {activeSection === 0 && (
+                  <div className="800px:w-[80%] w-[90vw] m-auto 800px:p-2 text-justify">
+                    {game.description.map((description) => (
+                      <div className="text-center">
+                        <p className="text-xs 800px:text-base text-center">{description}</p>
+                        <br />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {activeSection === 1 && (
+                  <div className="w-[85%] 800px:px-24 m-auto p-2 flex 800px:flex-row flex-col gap-3 justify-between">
+                    <div className="800px:w-[40%] w-[100%] flex justify-center mt-8">
+                      <RatingCircle rating={game.ratings[0].rating} />
+                    </div>
+                    <div className="800px:w-[45%] w-[100%] mt-8 flex flex-col justify-between gap-8">
+                      <div className="">
+                        <p
+                          className={`${staatliches.className} 800px:text-5xl text-3xl 800px:text-right text-center uppercase`}
+                        >
+                          {game.ratings[0].positive.title}
+                        </p>
+                        <p className="800px:text-lg text-xs 800px:text-right text-center 800px:pl-[6rem] text-slate-200">
+                          {game.ratings[0].positive.description}
+                        </p>
+                      </div>
+                      <div>
+                        <p
+                          className={`${staatliches.className} 800px:text-5xl text-3xl 800px:text-right text-center uppercase`}
+                        >
+                          {game.ratings[0].negative.title}
+                        </p>
+                        <p className="800px:text-lg text-xs 800px:text-right text-center 800px:pl-[6rem] text-slate-200 ">
+                          {game.ratings[0].negative.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

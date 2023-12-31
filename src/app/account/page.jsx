@@ -1,5 +1,5 @@
 'use client';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../components/Account/Header'
 import Link from 'next/link';
 import { styles } from '../utils/styles';
@@ -63,6 +63,10 @@ function Page() {
         };
         fileReader.readAsDataURL(e.target.files[0]);
     };
+
+    // useEffect( async () => {
+    //     console.log('Fetch Cart Details')
+    // }, [])
 
   return (
     <div className='w-[100%] pt-4 absoute top-0'>
@@ -452,6 +456,9 @@ function Page() {
                             selectedInMobile === 3 && (
                                 <>
                                     <h1 className={`${staatliches.className} w-[90%] uppercase pt-12 pb-10 text-2xl text-[32px] font-bold m-auto`}>Purchases</h1>
+                                    <div>
+
+                                    </div>
                                 </>
                             )    
                         }

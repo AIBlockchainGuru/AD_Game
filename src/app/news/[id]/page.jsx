@@ -42,7 +42,7 @@ function Page({params}) {
                         <Header />
                     </div>
 
-                    <div className="w-[90vw] absolute top-[150px] left-[5vw] bg-black bg-opacity-65 z-20 rounded-xl m-auto">
+                    <div className="w-[90vw] absolute top-[150px] h-auto left-[5vw] bg-black bg-opacity-65 z-20 rounded-xl m-auto">
                         <div className="bg-[#00171F] text-center p-8 800px:text-left 800px:p-20 bg-opacity-5 z-30 w-[90vw] m-auto rounded-xl">
                             <h1 className={`${staatliches.className} uppercase text-lg 800px:text-xl 1100px:text-2xl mb-14`}>
                                 {title}
@@ -57,6 +57,7 @@ function Page({params}) {
                             }
                         </div>
                     </div>
+                    {/* make it stick to bottom */}
                     <div className="bottom-0 z-10 mt-10 mb-10 text-center">
                         <Link href={'/'}>
                             <button className={styles.button}>

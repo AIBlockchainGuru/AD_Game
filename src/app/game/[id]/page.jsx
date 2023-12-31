@@ -204,8 +204,8 @@ function Page({params}) {
 
                 {activeSection === 0 && (
                   <div className="800px:w-[80%] w-[90vw] m-auto 800px:p-2 text-justify">
-                    {game.description.map((description) => (
-                      <div className="text-center">
+                    {game.description.map((description, index) => (
+                      <div key={`D00${index}`} className="text-center">
                         <p className="text-xs 800px:text-base text-center">{description}</p>
                         <br />
                       </div>

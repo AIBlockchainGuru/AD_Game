@@ -1,5 +1,6 @@
 import { styles } from '../../utils/styles'
 import React from 'react';
+import { staatliches } from '../../utils/font';
 
 const Questions = [
     {
@@ -23,27 +24,27 @@ function Faqs() {
     return (
         <div className='w-[100vw] flex flex-col justify-center items-center'>
             <div className="h-[10vh] w-[100vw] flex flex-col justify-center bg-black">
-                <h1 className='text-center text-4xl m-auto sm:text-3xl uppercase'>Got any Questions?</h1>
+                <h1 className={`${staatliches.className} text-center text-3xl 800px:text-4xl m-auto uppercase`}>Got any Questions?</h1>
             </div>
-            <div className="w-[90%] flex justify-center m-auto pt-6">
-                <div className="w-[45%] mt-10">
+            <div className="w-[90%] flex flex-col 800px:flex-row items-center 800px:items-start justify-center m-auto pt-6">
+                <div className="w-[90%] 800px:w-[45%] mt-10">
                     {
                         Questions.map((question, index) => (
                             (index%2 === 0) && 
-                            <div key={question.id} className="flex flex-col flex-wrap mb-8 w-[90%]">
-                                <h1 className='uppercase text-3xl'>{question.title}</h1>
+                            <div key={question.id} className="flex flex-col flex-wrap mb-[64px] w-[90%]">
+                                <h1 className={`${staatliches.className} uppercase text-2xl`}>{question.title}</h1>
                                 <p className='text-sm'>{question.description}</p>
                             </div>
                         ))
                     }
 
                 </div>
-                <div className="w-[45%] mt-10">
+                <div className="w-[90%] 800px:w-[45%] 800px:mt-10">
                     {
                         Questions.map((question, index) => (
                             (index%2 !== 0) && 
-                            <div key={question.id} className="flex flex-col flex-wrap mb-3 w-[90%]">
-                                <h1 className='uppercase text-3xl'>{question.title}</h1>
+                            <div key={question.id} className="flex flex-col flex-wrap mb-[64px] w-[90%]">
+                                <h1 className={`${staatliches.className} uppercase text-2xl`}>{question.title}</h1>
                                 <p className='text-sm'>{question.description}</p>
                             </div>
                         ))

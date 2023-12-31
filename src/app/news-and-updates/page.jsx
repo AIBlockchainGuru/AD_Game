@@ -41,7 +41,7 @@ function Page() {
                         <div className="w-[90%] md:w-[50%] flex flex-col justify-between gap-4">
                             <div className='flex flex-col gap-6'>
                                 <p className={`${staatliches.className} uppercase text-xl 800px:text-4xl line-clamp-3`}>{curr.title}</p>
-                                <p className={`text-md mt-2 line-clamp-4`}>{curr.description}</p>
+                                <p className={`text-md mt-2 line-clamp-4`}>{curr.brief}</p>
                             </div>
                             <div className='pb-1 mt-2'>
                                 {
@@ -83,9 +83,11 @@ function Page() {
                     <div key={game.id} className='relative'>
                         <Image 
                             src={game.thumbnailUrl}
-                            alt=''
+                            alt=' '
                             width={380}
                             height={275}
+                            quality={100}
+                            sizes='200vh, 150vw'
                             className='w-[190px] h-[140px] 800px:w-[380px] 800px:h-[275px] border-[0.5px] border-white rounded-xl'
                         />
                         <div className="absolute w-[190px] h-[140px] 800px:w-[380px] 800px:h-[275px] top-0 left-0 rounded-2xl bg-black bg-opacity-25 "></div>

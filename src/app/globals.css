@@ -108,17 +108,22 @@
   }
 }
 
-/* .rating {
+.dropdown {
+  background-color: transparent !important;
+  border: 1px solid white !important;
+  color: white !important;
+}
+
+.dropdown:hover {
+  background-color: gray !important;
+  opacity: 0.7;
+}
+
+.dropdown {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100%;
-  overflow: hidden;
-  
-  background:  purple;
-  color: plum;
-  width: 100px;
-  height: 100px;
-  /* Basic style for the text */
-  
+  font-family: Arial;
+}
+
+.dropdown select {
+  display: none; /*hide original SELECT element: */
+}

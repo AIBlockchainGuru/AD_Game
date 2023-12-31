@@ -8,8 +8,36 @@ import GameCard from "../../components/Shop/GameCard";
 import Footer from "../Home/Footer";
 import { staatliches } from "../../utils/font";
 
+const filterOptions = [
+    {
+        label: 'Action',
+        value: 'action'
+    },
+    {
+        label: 'Adventure',
+        value: 'adventure'
+    },
+    {
+        label: 'RPG',
+        value: 'rpg'
+    },
+    {
+        label: 'Isometric',
+        value: 'isometric'
+    },
+    {
+        label: 'Arcade',
+        value: 'arcade'
+    },
+    {
+        label: 'Simulation',
+        value: 'simulation'
+    },
+]
+
 function Shop() {
   const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("");
   return (
     <div className="w-[100vw] bg-cover bg-center bg-no-repeat flex flex-col items-center shop">
       <Header />
@@ -30,13 +58,20 @@ function Shop() {
                 />
             </div>
             <div className="w-[30%] mt-5 relative mb-1">
-                <input 
-                    type='text'
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder="Filter"
-                    className={`${styles.input} bg-transparent px-8 placeholder:text-white`} 
-                />
+                <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    className={`${styles.input} dropdown bg-transparent !py-2 px-8 border border-white placeholder:text-white`}
+                >
+                    <option className="bg-transparent" value="" disabled>
+                    Filter
+                    </option>
+                    {filterOptions.map((option) => (
+                    <option className="bg-transparent" key={option.value} value={option.value}>
+                        {option.label}
+                    </option>
+                    ))}
+                </select>
                 <FaFilter
                     className="absolute bottom-2 left-2 z-1 cursor-pointer text-white"
                     size={20}

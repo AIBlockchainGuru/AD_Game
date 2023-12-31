@@ -1,164 +1,253 @@
-'use client'
-import React, { useEffect, useState} from 'react'
-import { games } from '../../utils/games';
-import Image from 'next/image';
-import Header from '../../components/Game/Header';
-import { styles } from '../../utils/styles';
-import RatingCircle from '../../components/Game/RatingCircle'
-import Loader from '../../components/Loader/Loader'
-import { staatliches } from '../../utils/font';
+"use client";
+import React, { useEffect, useState } from "react";
+import { games } from "../../utils/games";
+import Image from "next/image";
+import Header from "../../components/Game/Header";
+import { styles } from "../../utils/styles";
+import RatingCircle from "../../components/Game/RatingCircle";
+import Loader from "../../components/Loader/Loader";
+import { staatliches } from "../../utils/font";
+import { MdDone, MdClose } from "react-icons/md";
 
 const sections = [
-    {
-        title: "Description",
-        index: 0,
-        isSelected: true
-    },
-    {
-        title: "Ratings",
-        index: 1,
-        isSelected: false,
-    },
-    {
-        title: "Review",
-        index: 2,
-        isSelected: false
-    },
-]
-
+  {
+    title: "Description",
+    index: 0,
+    isSelected: true,
+  },
+  {
+    title: "Ratings",
+    index: 1,
+    isSelected: false,
+  },
+  {
+    title: "Review",
+    index: 2,
+    isSelected: false,
+  },
+];
 
 function Page({params}) {
-    const { id } = params;
+  const { id } = params;
 
-    const [activeSection, setActiveSection] = useState(0);
-    const [game, setGame] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-    
-    const {title, description, genres, price, thumbnailUrl, cardUrl, available} = game;
+  const [activeSection, setActiveSection] = useState(0);
+  const [game, setGame] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-    const handlleSectionChange = (idx) => {
-        for(let i = 0; i < 3; i++){
-            if(sections[i].isSelected === true){
-                sections[i].isSelected === false;
-            }
-            sections[idx].isSelected = true
-        }
+  const {
+    title,
+    description,
+    genres,
+    price,
+    thumbnailUrl,
+    cardUrl,
+    available,
+  } = game;
+
+  const handlleSectionChange = (idx) => {
+    for (let i = 0; i < 3; i++) {
+      if (sections[i].isSelected === true) {
+        sections[i].isSelected === false;
+      }
+      sections[idx].isSelected = true;
     }
+  };
 
-    useEffect(() => {
-        setTimeout(()=>{
-            setIsLoading(false);
-        }, 200)
-        const game = games.filter((game) => game.id === id);
-        setGame(game[0]);
-    }, [])
-
-    return (
-        <>
-        { isLoading ? (
-            <Loader />
-        )
-          :  (<div className='w-[100%] h-[200vh] pb-4 '>
-                <div className='w-[100%] z-1 game'>
-                    <Image 
-                        src={thumbnailUrl}
-                        alt=''
-                        width={1024}
-                        height={1024}
-                        className='w-[100%] h-[100vh] object-stretch z-1'
-                    />
-                </div>
-                <h1 className='z-3 absolute top-0 w-[100%] p-4 m-auto'>
-                    <Header />
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 200);
+    const game = games.filter((game) => game.id === id);
+    setGame(game[0]);
+  }, []);
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="w-full h-full">
+          <div className="z-10">
+            <Image
+              src={thumbnailUrl}
+              alt=""
+              width={1024}
+              height={1024}
+              className="w-[100%] h-full 800px:object-stretch object-center z-1"
+              quality={100}
+              sizes="100vw, 200vh"
+            />
+          </div>
+          <div className="w-[90%] m-auto">
+            <Header />
+          </div>
+          <div className="w-[100vw] relative 800px:top-[-40vh] z-30">
+            <div className="1100px:w-[85vw] m-auto">
+              <Image
+                src={cardUrl}
+                width={1048}
+                height={1048}
+                alt=""
+                quality={100}
+                sizes="90vw, 150vh"
+                className="w-[100%] 800px:h-[150vh] h-[200vh] object-stretch rounded-2xl"
+              />
+              <div className="absolute top-0 1100px:w-[85vw] w-[100vw] 800px:h-[150vh] h-[200vh] bg-black bg-opacity-80 rounded-xl"></div>
+            </div>
+            <div className="w-[70vw] m-auto absolute pl-5 1100px:pl-32 top-[10vh] 800px:left-[9vw]">
+              <div className="w-[100%] m-auto">
+                <h1
+                  className={` ${staatliches.className} text-left mb-12  m-auto uppercase text-3xl font-bold`}
+                >
+                  {title}
                 </h1>
-                <div className='z-3 absolute top-[50vh] w-[90%] left-[5%] p-4 m-auto'>
-                    <div className='w-[90%] relative h-[60vh] z-4 m-auto text-center game--innercard'>
-                        <Image 
-                            src={cardUrl}
-                            alt=''
-                            width={1024}
-                            height={1024}
-                            className='w-[100%] h-[130vh] object-stretch z-4 rounded-2xl'
-                            style={{
-                                boxShadow: '0px 0px 100px white', // Adjust the shadow values as needed
-                            }}
-                        />
-                        <div className='absolute top-0 w-[100%] h-[130vh] bg-black bg-opacity-45 rounded-xl'></div>
-                        <h1 className={` ${staatliches.className} w-[90%] z-5 absolute top-[10vh] text-left pl-32 m-auto uppercase text-3xl font-bold`}>{title}</h1>
-                        <div className='w-90% flex items-center absolute top-[15vh] p-5 m-auto gap-4 justify-around'>
-                            <div className="w-[40%] 800px:w-[380px] 800px:h-[380px]ml-auto">
-                                <Image 
-                                    src={thumbnailUrl}
-                                    alt=''
-                                    width={380}
-                                    height={380}
-                                    className='w-[100%] h-[100%] rounded-lg z-1 mt-5'
-                                />
-                            </div>
-                            
-                        </div>
-                        
-                        <div className="w-[100%] flex flex-col gap-2 absolute top-[68vh] left-[] z-5  m-auto">
-                            <div className='w-[100%] flex p-2 bg-[#00171F] m-auto'>
-                                {
-                                    sections.map((section, index) => (
-                                        <div key={section.title} className={`w-[90%] text-center cursor-pointer ${index === activeSection ? 'border-b-2 border-white' : ''}`}>
-                                            <p 
-                                                className={`uppercase text-lg font-bold ${section.isSelected ? 'text-white' : 'text-gray-400'}`}
-                                                onClick={() => {
-                                                    sections[activeSection].isSelected = false;
-                                                    setActiveSection(index)
-                                                    sections[index].isSelected = true;
-                                                }}
-                                            >
-                                                {section.title}
-                                            </p>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-
-                            {
-                                activeSection === 0 && (
-                                    <div className='w-[80%] m-auto p-2 text-justify'>
-                                        {games[1].description.map((description) => (
-                                            <div>
-                                                <p>{description}</p>
-                                                <br />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )
-                            }
-                            {
-                                activeSection === 1 && (
-                                    <div className='w-[85%] m-auto p-2 flex gap-3 justify-between'>
-                                        <div className='w-[40%]'>
-                                            <RatingCircle rating={3} />
-                                        </div>
-                                        <div className='w-[45%] mt-4 flex flex-col gap-2'>
-                                            <p className='text-3xl font-bold text-right uppercase'>{games[1].ratings[0].positive.title}</p>
-                                            <p className='text-sm text-right font-semibold pl-[6rem] text-gray-400'>{games[1].ratings[0].positive.description}</p>
-                                            <p className='text-3xl mt-6 font-bold text-right uppercase'>{games[1].ratings[0].negative.title}</p>
-                                            <p className='text-sm text-right font-semibold pl-[6rem] text-gray-400'>{games[1].ratings[0].negative.description}</p>
-                                        </div>
-                                    </div>
-                                )
-                            }
-
-                        </div>
-
+                <div className="flex flex-col 800px:flex-row gap-10 mb-12">
+                  <div className="1100px:w-[50%] w-[90vw]">
+                    <Image
+                      src={thumbnailUrl}
+                      alt=""
+                      width={380}
+                      height={380}
+                      className=""
+                      quality={100}
+                      sizes="90vw, 150vh"
+                      className="w-[100%] h-[380px] rounded-2xl "
+                    />
+                  </div>
+                  <div className="w-[90vw] 800px:w-[50%] flex 800px:flex-col justify-between">
+                    <div>
+                    <p
+                      className={`${staatliches.className} 800px:text-xl text-sm text-gray-400 font-bold text-left`}
+                    >
+                      OUR PRICE
+                    </p>
+                    <p
+                      className={`${staatliches.className} font-bold 800px:text-9xl text-6xl text-left mt-5`}
+                    >
+                      {price}
+                      <span
+                        className={`${staatliches.className} 800px:text-3xl text-sm text-gray-400 ml-1 text-left`}
+                      >
+                        RS
+                      </span>
+                    </p>
                     </div>
+                    <div className="flex flex-col items-end">
+                    
+                      <div
+                        className={`${staatliches.className} font-bold 800px:text-xl uppercase`}
+                      >
+                        {available ? (
+                          <div className="flex gap-1">
+                            <MdDone className="w-[24px] h-[24px] text-[#7C8BD0]" />{" "}
+                            <p className="text-[#7C8BD0]">In Stock</p>
+                          </div>
+                        ) : (
+                          <div className="flex gap-1">
+                            <MdClose className="w-[24px] h-[24px] text-red-600" />{" "}
+                            <p className="text-red-600">Out of Stock</p>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="text-right">
+                        <label
+                          htmlFor="quantity"
+                          className={`${staatliches.className} uppercase 800px:text-xl text-gray-400 mr-2`}
+                        >
+                          QTY:
+                        </label>
+                        <input
+                          type="text"
+                          name="Quantity"
+                          id="quantity"
+                          className={`text-white py-1 px-4 border-slate-50 border-small rounded-none text-lg h-6 800px:h-9 800px:mt-1 800px:w-[40%] w-[30%] bg-transparent text-right`}
+                        />
+                      </div>
+                      <br />
+                      <div className="w-[100%] text-right">
+                        <button
+                          className={`bg-transparent text-white py-1 800px:px-4 px-9 border-slate-50 border-small rounded-none text-sm 800px:text-lg 800px:w-[85%] 800px:mt-3 w-[60%] text-center`}
+                        >
+                          Add to cart
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="800px:w-[85vw] w-[100vw] absolute 800px:left-[-1.5vw] left-0 flex flex-col gap-2">
+                <div className="w-[100%] flex py-2 bg-black">
+                  {sections.map((section, index) => (
+                    <div
+                      key={section.title}
+                      className={`${
+                        staatliches.className
+                      } w-[90%] text-center cursor-pointer ${
+                        index === activeSection ? "border-b-2 border-white" : ""
+                      }`}
+                    >
+                      <p
+                        className={`uppercase text-2xl ${
+                          section.isSelected ? "text-white" : "text-gray-400"
+                        }`}
+                        onClick={() => {
+                          sections[activeSection].isSelected = false;
+                          setActiveSection(index);
+                          sections[index].isSelected = true;
+                        }}
+                      >
+                        {section.title}
+                      </p>
+                    </div>
+                  ))}
                 </div>
 
-                <div className='text-center z-5'>
-                    <button className={`${styles.button} uppercase`}>
-                        return
-                    </button>
-                </div>
-            </div>)}
-        </>
-  )
+                {activeSection === 0 && (
+                  <div className="800px:w-[80%] w-[90vw] m-auto 800px:p-2 text-justify">
+                    {game.description.map((description) => (
+                      <div className="text-center">
+                        <p className="text-xs 800px:text-base text-center">{description}</p>
+                        <br />
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {activeSection === 1 && (
+                  <div className="w-[85%] 800px:px-24 m-auto p-2 flex 800px:flex-row flex-col gap-3 justify-between">
+                    <div className="800px:w-[40%] w-[100%] flex justify-center mt-8">
+                      <RatingCircle rating={game.ratings[0].rating} />
+                    </div>
+                    <div className="800px:w-[45%] w-[100%] mt-8 flex flex-col justify-between gap-8">
+                      <div className="">
+                        <p
+                          className={`${staatliches.className} 800px:text-5xl text-3xl 800px:text-right text-center uppercase`}
+                        >
+                          {game.ratings[0].positive.title}
+                        </p>
+                        <p className="800px:text-lg text-xs 800px:text-right text-center 800px:pl-[6rem] text-slate-200">
+                          {game.ratings[0].positive.description}
+                        </p>
+                      </div>
+                      <div>
+                        <p
+                          className={`${staatliches.className} 800px:text-5xl text-3xl 800px:text-right text-center uppercase`}
+                        >
+                          {game.ratings[0].negative.title}
+                        </p>
+                        <p className="800px:text-lg text-xs 800px:text-right text-center 800px:pl-[6rem] text-slate-200 ">
+                          {game.ratings[0].negative.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default Page;

@@ -6,6 +6,8 @@ import { styles } from '../utils/styles';
 import Footer from '../components/Home/Footer';
 import Image from 'next/image';
 import { staatliches } from '../utils/font';
+import { purchase } from '../utils/purchase';
+import PurchaseCard from '../components/Account/PurchaseCard';
 
 const navOptions = [
     {
@@ -253,6 +255,25 @@ function Page() {
                     selected === 3 && (
                         <>
                             <h1 className={`${staatliches.className} w-[90%] uppercase pt-12 pb-10 text-2xl text-[32px] font-bold m-auto`}>Purchases</h1>
+                            <div className='w-[90%] h-[72vh] overflow-y-auto flex flex-col m-auto !mb-0 mt-5'>
+                                {/* Cart Details */}
+                                {
+                                    purchase.length !== 0 && purchase.map((curr) => (
+                                        <>
+                                            <div key={curr.gameId} className='mb-8'>
+                                                <PurchaseCard purchase={curr} />
+                                            </div>
+                                        </>
+                                    ))
+                                }
+                                {
+                                    purchase.length == 0 && (
+                                        <div className="flex flex-col h-[72vh] justify-center items-center">
+                                            <h1 className={`${staatliches.className} text-[#9793A6] text-xl uppercase`}>Nothing Purchased Yet</h1>
+                                        </div>
+                                    )
+                                }
+                            </div>
                         </>
                     )    
                 }
@@ -391,7 +412,7 @@ function Page() {
                                         <div className='flex flex-col items-center w-[100%]'>
                                             <button className={`${styles.button} w-[70%]`}>
                                                 Save Changes
-                                            </button>
+                                            </button> 
                                         </div>
                                     </div>
 
@@ -456,8 +477,24 @@ function Page() {
                             selectedInMobile === 3 && (
                                 <>
                                     <h1 className={`${staatliches.className} w-[90%] uppercase pt-12 pb-10 text-2xl text-[32px] font-bold m-auto`}>Purchases</h1>
-                                    <div>
-
+                                    <div className='w-[90%] h-[72vh] overflow-y-auto flex flex-col m-auto !mb-0 mt-5'>
+                                        {/* Cart Details */}
+                                        {
+                                            purchase.length !== 0 && purchase.map((curr) => (
+                                                <>
+                                                    <div key={curr.gameId} className='mb-8'>
+                                                        <PurchaseCard purchase={curr} />
+                                                    </div>
+                                                </>
+                                            ))
+                                        }
+                                        {
+                                            purchase.length == 0 && (
+                                                <div className="flex flex-col h-[72vh] justify-center items-center">
+                                                    <h1 className={`${staatliches.className} text-[#9793A6] text-xl uppercase`}>Nothing Purchased Yet</h1>
+                                                </div>
+                                            )
+                                        }
                                     </div>
                                 </>
                             )    

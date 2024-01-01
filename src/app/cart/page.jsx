@@ -76,13 +76,20 @@ function Page() {
                 <div className='w-[90%] h-[70vh] overflow-y-auto flex flex-col m-auto !mb-0 mt-10'>
                     {/* Cart Details */}
                     {
-                        cart.map((curr) => (
+                        cart.length !== 0 && cart.map((curr) => (
                             <>
                                 <div key={curr.gameId} className='mb-8'>
                                     <CartCard cart={curr} total={Number(total)} setTotal={setTotal} />
                                 </div>
                             </>
                         ))
+                    }
+                    {
+                        cart.length == 0 && (
+                            <div className="flex flex-col h-[70vh] justify-center items-center">
+                                <h1 className={`${staatliches.className} text-xl text-[#9793A6] uppercase`}>Your cart is empty</h1>
+                            </div>
+                        )
                     }
                 </div>
                 <div className='w-[90%] m-auto !mt-8'>
@@ -276,13 +283,20 @@ function Page() {
                         <div className='w-[90%] h-[72vh] overflow-y-auto flex flex-col m-auto !mb-0 mt-5'>
                             {/* Cart Details */}
                             {
-                                cart.map((curr) => (
+                                cart.length !== 0 && cart.map((curr) => (
                                     <>
                                         <div key={curr.gameId} className='mb-8'>
                                             <CartCard cart={curr} total={Number(total)} setTotal={setTotal} />
                                         </div>
                                     </>
                                 ))
+                            }
+                            {
+                                cart.length == 0 && (
+                                    <div className="flex flex-col h-[72vh] justify-center items-center">
+                                        <h1 className={`${staatliches.className} text-[#9793A6] text-xl uppercase`}>Your cart is empty</h1>
+                                    </div>
+                                )
                             }
                         </div>
                         <div className='w-[90%] m-auto !mt-8'>
@@ -326,7 +340,10 @@ function Page() {
         {
             toggle == 0 && (
                 <div className='800px:hidden text-center mt-10 mb-10'>
-                    <button className={styles.button} onClick={() => setToggle(1)}>
+                    <button className={styles.button} onClick={() => {
+                        setTotal(0)
+                        setToggle(1)
+                    }}>
                         Check Cart
                     </button>
                 </div>

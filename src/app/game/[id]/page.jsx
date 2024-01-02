@@ -8,6 +8,8 @@ import RatingCircle from "../../components/Game/RatingCircle";
 import Loader from "../../components/Loader/Loader";
 import { staatliches } from "../../utils/font";
 import { MdDone, MdClose } from "react-icons/md";
+import Footer from "../../components/Home/Footer";
+import Link from "next/link";
 
 const sections = [
   {
@@ -62,8 +64,9 @@ function Page({params}) {
   }, []);
   return (
     <>
-      {isLoading ? (
-        <Loader />
+      { 
+        isLoading ? (
+          <Loader />
       ) : (
         <div className="w-full h-full">
           <div className="z-10">
@@ -89,9 +92,9 @@ function Page({params}) {
                 alt=""
                 quality={100}
                 sizes="90vw, 150vh"
-                className="w-[100%] 800px:h-[150vh] h-[200vh] object-stretch rounded-2xl"
+                className="w-[100%] 800px:h-[1000px] h-[1200px] object-stretch rounded-2xl"
               />
-              <div className="absolute top-0 1100px:w-[85vw] w-[100vw] 800px:h-[150vh] h-[200vh] bg-black bg-opacity-80 rounded-xl"></div>
+              <div className="absolute top-0 1100px:w-[85vw] w-[100vw] 800px:h-[1000px] h-[1200px] bg-black bg-opacity-80 rounded-xl"></div>
             </div>
             <div className="w-[70vw] m-auto absolute pl-5 1100px:pl-32 top-[10vh] 800px:left-[9vw]">
               <div className="w-[100%] m-auto">
@@ -157,9 +160,11 @@ function Page({params}) {
                           QTY:
                         </label>
                         <input
-                          type="text"
+                          type="number"
                           name="Quantity"
+                          min={0}
                           id="quantity"
+                          placeholder="00"
                           className={`text-white py-1 px-4 border-slate-50 border-small rounded-none text-lg h-6 800px:h-9 800px:mt-1 800px:w-[40%] w-[30%] bg-transparent text-right`}
                         />
                       </div>
@@ -206,7 +211,7 @@ function Page({params}) {
                   <div className="800px:w-[80%] w-[90vw] m-auto 800px:p-2 text-justify">
                     {game.description.map((description, index) => (
                       <div key={`D00${index}`} className="text-center">
-                        <p className="text-xs 800px:text-base text-center">{description}</p>
+                        <p className="text-base text-center">{description}</p>
                         <br />
                       </div>
                     ))}
@@ -241,9 +246,40 @@ function Page({params}) {
                     </div>
                   </div>
                 )}
+                {
+                  activeSection == 2 && (
+                    <>
+                      <h1 className="text-center text-xl">Review</h1>
+                    </>
+                  )
+                }
               </div>
             </div>
+            {
+              activeSection == 2 && (
+                <div className="w-[90vw] 800px:absolute 800px:left-[5%] 800px:bottom-[-20vh] text-center !m-auto !mb-0 800px:!mb-10 !pt-10">
+                  <Link href={'/'}>
+                      <button className={`${styles.button}`}>
+                        Add Review
+                      </button>
+                  </Link>
+                </div>
+              )
+            }
+            <div className="w-[90vw] 800px:absolute 800px:left-[5%] 800px:bottom-[-30vh] text-center !m-auto !mb-10 800px:mb-0 !pt-10">
+              <Link href={'/'}>
+                  <button className={`${styles.button}`}>
+                    Return
+                  </button>
+              </Link>
+            </div>
           </div>
+
+
+          <div className="w-[100vw]">
+            <Footer />
+          </div>
+
         </div>
       )}
     </>

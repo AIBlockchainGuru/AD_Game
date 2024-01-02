@@ -18,6 +18,13 @@ export const games = [
                 }
             }
         ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
+            }
+        ],
         price: 2000,
         thumbnailUrl: '/assets/adnetwork-10.jpg',
         cardUrl: '',
@@ -40,6 +47,13 @@ export const games = [
                     title: `Lack of side content`,
                     description: `Lack of side missions makes it focus only on the main storyline.`
                 }
+            }
+        ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
             }
         ],
         thumbnailUrl: '/assets/adnetwork-9.jpeg',
@@ -66,6 +80,13 @@ export const games = [
                 }
             }
         ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
+            }
+        ],
         thumbnailUrl: '/assets/adnetwork-6.jpg',
         cardUrl: '',
         price: 2100,
@@ -88,6 +109,13 @@ export const games = [
                     title: `Lack of side content`,
                     description: `Lack of side missions makes it focus only on the main storyline.`
                 }
+            }
+        ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
             }
         ],
         thumbnailUrl: '/assets/adnetwork-5.jpeg',
@@ -114,6 +142,13 @@ export const games = [
                 }
             }
         ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
+            }
+        ],
         price: 2000,
         thumbnailUrl: '/assets/adnetwork-10.jpg',
         cardUrl: '',
@@ -136,6 +171,13 @@ export const games = [
                     title: `Lack of side content`,
                     description: `Lack of side missions makes it focus only on the main storyline.`
                 }
+            }
+        ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
             }
         ],
         thumbnailUrl: '/assets/adnetwork-9.jpeg',
@@ -162,6 +204,13 @@ export const games = [
                 }
             }
         ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
+            }
+        ],
         thumbnailUrl: '/assets/adnetwork-6.jpg',
         cardUrl: '',
         price: 2100,
@@ -184,6 +233,13 @@ export const games = [
                     title: `Lack of side content`,
                     description: `Lack of side missions makes it focus only on the main storyline.`
                 }
+            }
+        ],
+        reviews:[
+            {
+                reviewId: `ADNR001`,
+                userId: `ADNU001`,
+                content: ``
             }
         ],
         thumbnailUrl: '/assets/adnetwork-5.jpeg',

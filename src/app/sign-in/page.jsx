@@ -1,17 +1,20 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInStart, signInSuccess, signInFailure } from '../../redux/userSlice';
 import { styles } from '../utils/styles';
 import Link from 'next/link';
 import {useRouter} from "next/navigation";
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
-import Footer from '../components/Home/Footer'
-import toast, { Toaster } from 'react-hot-toast'
+import Footer from '../components/Home/Footer';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Page = () => {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
     
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -35,11 +38,13 @@ const Page = () => {
     
             if (response.ok) {
                 const data = await response.json();
+                dispatch(signInSuccess(data.user));
                 toast.success("Welcome back!");
                 router.push("/");
             } else {
                 try {
                     const errorData = await response.json();
+                    dispatch(signInFailure(errorData.message))
                     toast.error(errorData.message || 'Sign-in failed');
                 } catch (jsonError) {
                     console.error('Error parsing JSON:', jsonError);
@@ -48,6 +53,7 @@ const Page = () => {
             }
         } catch (error) {
             console.error('Error during sign-in:', error);
+            dispatch(signInFailure(error))
             toast.error('Error during sign-in. Please try again.');
         }
     };

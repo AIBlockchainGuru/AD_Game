@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../../redux/userSlice';
 import { styles } from '../utils/styles';
@@ -12,6 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Page = () => {
     const router = useRouter();
+    const { currentUser } = useSelector(state => state.user)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
@@ -57,6 +58,12 @@ const Page = () => {
             toast.error('Error during sign-in. Please try again.');
         }
     };
+
+    useEffect(() => {
+        if(currentUser){
+            router.push("/");
+        }
+    }, [])
     
   return (
     <>

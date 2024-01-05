@@ -6,10 +6,13 @@ import Image from 'next/image';
 import { Divider } from '@nextui-org/react';
 import { styles } from '../../utils/styles'
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const HEADER = `Welcome to AD Network, where gaming becomes a lifestyle. Unleash your inner gamer and dive into our vast universe of games, memberships, and vouchers.`;
 
 const Hero = () => {
+  const { currentUser } = useSelector(state => state.user);
+
   return (
       <div className="w-[100vw] 1100px:h-[100vh] bg-cover bg-center bg-no-repeat flex flex-col items-center hero">
         <Header />
@@ -27,9 +30,17 @@ const Hero = () => {
 
           <Divider className='w-[90%] bg-slate-50 h-[0.5px] mt-4 mb-5'/>
 
-          <Link href={'/sign-up'}>
-            <button className={`${styles.button} mt-10 mb-3`}>Sign Up</button>
-          </Link>
+          {
+            currentUser ? (
+              <Link href={'/shop'}>
+                <button className={`${styles.button} mt-10 mb-3`}>Browse</button>
+              </Link>
+            ) : (
+              <Link href={'/sign-up'}>
+                <button className={`${styles.button} mt-10 mb-3`}>Sign Up</button>
+              </Link>
+            )
+          }
         </div>
       </div>
   );

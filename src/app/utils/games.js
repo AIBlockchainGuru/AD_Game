@@ -1,7 +1,7 @@
 export const games = [
     {
-        id: 'ADNG00111',
-        title: 'Cyberpunk 2077: Phantom Liberty',
+        itlid: 'ADNG00111',
+        te: 'Cyberpunk 2077: Phantom Liberty',
         description: [`In this installment, Peter Parker and Miles Morales struggle to navigate the next steps in their personal lives while combating several new threats, including a private militia led by Kraven the Hunter, who transforms New York City into a hunting ground for super-powered individuals. Marvel's Spider-Man 2 will explore different locations within New Your City besides outer Manhattan, such as Queens, Brooklyn, and Coney Island. Both Peter Parker and Miles Morales are playable as Spider-Men, with a different set of abilities: Peter Parker can use two different suit powers between Iron Arms and Symbiotes to gives him abilities that greatly improve his combat prowess and ability to defeat multiple goons at once, while Miles Morales has his unique abilities such as Camouflage invisibility and his venom-blast.`,
         `Additionally, the bar-based Focus-system return from the first game, meaning Miles' Bio Electric Vemon powers from his spin-off game being integrated to L1-based Power Gauge system alongside the Peter's own Power Gauge system.`],
         genres: ['Action', 'RPG'],

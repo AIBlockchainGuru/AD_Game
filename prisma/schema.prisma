@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int       @id @default(autoincrement())
+  username       String?
+  firstName      String?
+  lastName       String?
+  country        String?
+  avatar         String?
+  email          String    @unique
+  password       String
+  cart           Cart[]
+  paymentDetails PaymentDetails?
+  purchases      Purchase[]
+}
+
+model Cart {
+  id     Int    @id @default(autoincrement())
+  gameId String?
+  qty    Int?
+  userId Int   @unique
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model PaymentDetails {
+  id          Int    @id @default(autoincrement())
+  cardNumber  String?
+  expiry      String?
+  cvv         String?
+  userId      Int   @unique
+  user        User   @relation(fields: [userId], references: [id])
+}
+
+model Purchase {
+  id     Int    @id @default(autoincrement())
+  gameId String?
+  qty    Int?
+  userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id])
+}

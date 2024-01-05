@@ -2,21 +2,70 @@
 import React, { useState } from 'react'
 import { styles } from '../utils/styles'
 import Link from 'next/link'
+import {useRouter} from "next/navigation";
 import Footer from '../components/Home/Footer'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast'
 
 const Page = () => {
+    const router = useRouter();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     
-    const handleSignUp = () => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
-        
-        console.log('Form Submitted!')
-    }
+
+    
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            setPassword('');
+            setConfirmPassword('');
+            toast.error('Passwords do not match');
+            return;
+        }
+
+        if(password === ''){
+            toast.error('Please enter your password');
+            setConfirmPassword('');
+            return;
+        }
+    
+        try {
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                toast.success("Welcome to AD Network");
+                router.push("/sign-in");
+            } else {
+                try {
+                    const errorData = await response.json();
+                    toast.error(errorData.message || 'Signup failed');
+                } catch (jsonError) {
+                    console.error('Error parsing JSON:', jsonError);
+                    toast.error('Signup failed. Please try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Error during signup:', error);
+            alert('Error during signup. Please try again.');
+        }
+    };
+    
+    
   return (
     <>
         <div className="w-[100vw] h-[100vh] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
@@ -80,6 +129,10 @@ const Page = () => {
             </div>
         </div>
         <Footer />
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
     </>
   )
 }

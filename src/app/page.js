@@ -7,6 +7,7 @@ import Releases from './components/Home/Releases';
 import Giveaways from './components/Home/Giveaways';
 import Faqs from './components/Home/Faqs';
 import Footer from './components/Home/Footer';
+import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
   return (
@@ -18,6 +19,10 @@ export default function Home() {
         <Giveaways />
         <Faqs />
         <Footer />
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+        />
       </div>
     </NextUIProvider>
   )

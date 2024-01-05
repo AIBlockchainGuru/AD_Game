@@ -6,7 +6,6 @@ import {useRouter} from "next/navigation";
 import Footer from '../components/Home/Footer'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast'
 
 const Page = () => {

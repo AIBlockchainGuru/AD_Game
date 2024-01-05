@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     });
 
     if (!existingUser) {
-      return NextResponse.json({ message: 'User not found.' }, { status: 404 });
+      return NextResponse.json({ message: 'User not found, please check your email' }, { status: 404 });
     }
 
     // Check if the password is correct

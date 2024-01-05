@@ -12,7 +12,6 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.7.1",
-    "axios": "^1.6.4",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",

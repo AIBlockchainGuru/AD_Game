@@ -2,20 +2,56 @@
 import React, { useState } from 'react'
 import { styles } from '../utils/styles';
 import Link from 'next/link';
+import {useRouter} from "next/navigation";
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
 import Footer from '../components/Home/Footer'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Page = () => {
-
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
-    const handleSignIn = () => {
+    const handleSignIn = async (e) => {
         e.preventDefault();
-        
-        console.log('Form Submitted!')
-    }
+    
+        if (password === '') {
+            toast.error('Please enter your password');
+            return;
+        }
+    
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                toast.success("Welcome back!");
+                router.push("/");
+            } else {
+                try {
+                    const errorData = await response.json();
+                    toast.error(errorData.message || 'Sign-in failed');
+                } catch (jsonError) {
+                    console.error('Error parsing JSON:', jsonError);
+                    toast.error('Sign-in failed. Please try again.');
+                }
+            }
+        } catch (error) {
+            console.error('Error during sign-in:', error);
+            toast.error('Error during sign-in. Please try again.');
+        }
+    };
+    
   return (
     <>
         <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
@@ -68,6 +104,7 @@ const Page = () => {
             <div className="fixed bottom-0 w-[100vw]">
                 <Footer />
             </div>
+            <Toaster  />
         </div>
     </>
   )

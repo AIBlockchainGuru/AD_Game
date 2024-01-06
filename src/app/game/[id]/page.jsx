@@ -113,7 +113,7 @@ function Page({params}) {
                       className=""
                       quality={100}
                       sizes="90vw, 150vh"
-                      className="w-[100%] h-[380px] rounded-2xl "
+                      className="w-[100%] h-[380px] rounded-2xl"
                     />
                   </div>
                   <div className="w-[90vw] 800px:w-[50%] flex 800px:flex-col justify-between">

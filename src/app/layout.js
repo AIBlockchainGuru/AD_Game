@@ -1,7 +1,7 @@
 'use client'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Staatliches, Manrope } from 'next/font/google';
+import { Manrope } from 'next/font/google';
 import { Providers } from '../Providers/Provider';
 
 const inter = Inter({ subsets: ['latin'] })

@@ -110,7 +110,6 @@ function Page({params}) {
                       alt=""
                       width={380}
                       height={380}
-                      className=""
                       quality={100}
                       sizes="90vw, 150vh"
                       className="w-[100%] h-[380px] rounded-2xl"

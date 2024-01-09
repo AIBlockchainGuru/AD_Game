@@ -16,7 +16,7 @@ function About() {
         <div className="w-[100vw] h-[80vh] 1100px:h-[90vh] flex flex-col items-center about pb-0">
             <div className="items-center h-[100%] bg-black bg-opacity-45 text-white flex flex-col justify-center m-auto">
                 <div className="flex w-[90%] flex-col-reverse 800px:flex-row m-auto justify-between">
-                    <div className="1100px:w-[45%] 800px:w-[55%] w-[90%] 800px:pt-[200px]">
+                    <div className="1100px:w-[45%] 800px:w-[55%] w-[90%] 1100px:pt-[200px]">
                         <h1 className={`${staatliches.className} text-3xl 800px:text-4xl text-[800] mb-4`}>ABOUT AD NETWORK</h1>
                         <p className='text-medium mb-3'>{DESCRIPTION_ONE}</p>
                         <div className='flex gap-4'>
@@ -34,7 +34,7 @@ function About() {
                             </div>
                         </div>
                     </div>
-                    <div className="1100px:w-[35%] 800px:w-[50%] w-[90%] mb-8 text-right mr-10">
+                    <div className="1100px:w-[35%] hidden 1100px:block mb-8 text-right mr-10">
                         <h1 className={`${staatliches.className} text-2xl 800px:text-3xl text-[800] mb-5`}>Assasins Creed Mirage</h1>
                         <p className='text-[16px] mb-4'>{DESCRIPTION_TWO}</p>
 

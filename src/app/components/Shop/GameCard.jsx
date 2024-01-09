@@ -11,7 +11,7 @@ function GameCard({game}) {
   return (
     <>
         <div 
-            className="w-[100%] flex flex-col mb-4"
+            className="w-[100%] flex flex-col mb-8"
         >
             <Image
                 alt="Card background"
@@ -20,7 +20,7 @@ function GameCard({game}) {
                 width={270}
                 height={320}
             />
-            <div className="!bg-[#00171F] w-[85%] p-2 flex flex-col">
+            <div className="!bg-[#00171F] w-[85%] p-3 flex flex-col">
                 <p className={`${staatliches.className} text-[22px] uppercase text-left text-ellipsis truncate w-[100%]`}>{title}</p>
                 <p className='text-lg text-left'>{genres.map((genre, index) => ( index !== genres.length - 1 ? genre + ',' : genre))}</p>
                 <div className="mt-6 flex justify-between">

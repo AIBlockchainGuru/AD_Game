@@ -1,4 +1,3 @@
-// pages/api/signup.ts
 import { hash } from 'bcryptjs';
 import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';

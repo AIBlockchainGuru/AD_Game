@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Header from "./Header";
+import Header from "../../components/Header";
 import { FaSearch, FaFilter } from "react-icons/fa";
 import { styles } from "../../utils/styles";
 import { games } from "../../utils/games";
@@ -42,7 +42,7 @@ function Shop() {
     <div className="w-[100vw] bg-cover bg-center bg-no-repeat flex flex-col items-center shop">
       <Header />
       
-      <div className="w-[90%] m-auto mt-[100px] flex flex-col justify-evenly gap-7">
+      <div className="w-[90%] m-auto mt-[100px] flex flex-col justify-evenly gap-7 !pb-20">
         <div className="flex flex-row gap-7">
             <div className="w-[50%] mt-5 relative mb-1">
                 <input 
@@ -86,7 +86,7 @@ function Shop() {
         <div className="flex flex-row ml-6 800px:ml-0 flex-wrap justify-center">
             {
                 games.map((game) => (
-                    <div className="w-[50%] 800px:w-[33.33%] 1100px:w-[25%]">
+                    <div className="w-[100%] 800px:w-[50%] 1100px:w-[25%]">
                         <GameCard game={game} />
                     </div>
                 ))

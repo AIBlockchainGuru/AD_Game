@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { games } from "../../utils/games";
 import Image from "next/image";
-import Header from "../../components/Game/Header";
+import Header from "../../components/Header";
 import { styles } from "../../utils/styles";
 import RatingCircle from "../../components/Game/RatingCircle";
 import Loader from "../../components/Loader/Loader";

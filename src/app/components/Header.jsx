@@ -42,12 +42,14 @@ function Header() {
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <div className="text-xl">
-            <Image 
-              src={bgImage}
-              width={50}
-              height={50}
-              className='p-0 m-0 absolute top-0'
-            />
+           <Link href={"/"}>
+              <Image 
+                src={bgImage}
+                width={50}
+                height={50}
+                className='p-0 m-0 absolute top-0'
+              />
+           </Link>
           </div>
         </div>
         <ul className="800px:flex space-x-4 gap-2 hidden">

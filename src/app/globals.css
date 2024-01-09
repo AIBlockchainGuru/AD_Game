@@ -8,6 +8,15 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -35,7 +44,8 @@
 
 .hero {
   background: url("../../public/assets/adnetwork-2.jpg");
-  background-size: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .about {

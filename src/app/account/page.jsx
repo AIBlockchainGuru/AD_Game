@@ -57,7 +57,6 @@ function Page() {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
-
     const [loading, setLoading] = useState(true);
 
     
@@ -136,6 +135,39 @@ function Page() {
                 const errorData = await response.json();
                 dispatch(updateUserFailure(errorData.message))
                 toast.error('Error updating Profile ', errorData.message);
+            }
+        } catch (error) {
+            dispatch(updateUserFailure(error))
+            toast.error('Error updating Profile ', error);
+        }
+    }
+
+    const handlePasswordChange = async () => {
+        if(newPassword !== confirmNewPassword){
+            toast.error("Passwords do not match")
+        }
+
+        try {
+            const response = await fetch('/api/update-password', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: currentUser?.email, 
+                currentPassword: currentPassword,
+                newPassword: newPassword
+              }),
+            });
+      
+            if (response.ok) {
+                const data = await response.json();
+                dispatch(updateUserSuccess(data.user));
+                toast.success("Password updated successfully");
+            } else {
+                const errorData = await response.json();
+                dispatch(updateUserFailure(errorData.message))
+                toast.error(errorData.message);
             }
         } catch (error) {
             dispatch(updateUserFailure(error))
@@ -322,7 +354,7 @@ function Page() {
                                                                             onChange={(e) => setCurrentPassword(e.target.value)}
                                                                     />
                                                                     <input 
-                                                                        type="text" 
+                                                                        type="password" 
                                                                         id='newPassword' 
                                                                         placeholder='New Password' 
                                                                         value={newPassword} 
@@ -330,7 +362,7 @@ function Page() {
                                                                             onChange={(e) => setNewPassword(e.target.value)}
                                                                     />
                                                                     <input 
-                                                                        type="text" 
+                                                                        type="password" 
                                                                         id='confirmNewPassword' 
                                                                         placeholder='Confirm New Password' 
                                                                         value={confirmNewPassword} 
@@ -340,7 +372,7 @@ function Page() {
                                                                 </div>
                                                             </div>
                                                             <div className='flex flex-col items-center w-[100%]'>
-                                                                <button className={`${styles.button} w-[70%]`}>
+                                                                <button onClick={() => handlePasswordChange()} className={`${styles.button} w-[70%]`}>
                                                                     Save Changes
                                                                 </button>
                                                             </div>
@@ -544,7 +576,7 @@ function Page() {
                                                                                     onChange={(e) => setCurrentPassword(e.target.value)}
                                                                             />
                                                                             <input 
-                                                                                type="text" 
+                                                                                type="password" 
                                                                                 id='newPassword' 
                                                                                 placeholder='New Password' 
                                                                                 value={newPassword} 
@@ -552,7 +584,7 @@ function Page() {
                                                                                     onChange={(e) => setNewPassword(e.target.value)}
                                                                             />
                                                                             <input 
-                                                                                type="text" 
+                                                                                type="password" 
                                                                                 id='confirmNewPassword' 
                                                                                 placeholder='Confirm New Password' 
                                                                                 value={confirmNewPassword} 

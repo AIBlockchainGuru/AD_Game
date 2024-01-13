@@ -1,4 +1,3 @@
-// pages/api/login.ts
 import { compare } from 'bcryptjs';
 import { PrismaClient } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';

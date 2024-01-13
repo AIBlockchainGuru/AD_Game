@@ -47,7 +47,7 @@ const Page = () => {
     
             if (response.ok) {
                 const data = await response.json();
-                toast.success("Welcome to AD Network");
+                toast.success("Sign Up Successfull!");
                 router.push("/sign-in");
             } else {
                 try {

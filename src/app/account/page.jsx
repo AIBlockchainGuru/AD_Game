@@ -10,6 +10,7 @@ import { purchase } from '../utils/purchase';
 import PurchaseCard from '../components/Account/PurchaseCard';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutUser } from '../../redux/userSlice';
+import toast, { Toaster } from 'react-hot-toast';
 
 const navOptions = [
     {
@@ -47,10 +48,10 @@ function Page() {
     const [selected, setSelected] = useState(0);
     const [toggle, setToggle] = useState(0);
     const [selectedInMobile, setSelectedInMobile] = useState(0)
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [location, setLocation] = useState('');
-    const [username, setUsername] = useState('');
+    const [firstName, setFirstName] = useState(currentUser?.firstName || '');
+    const [lastName, setLastName] = useState(currentUser?.lastName || '');
+    const [location, setLocation] = useState(currentUser?.country || '');
+    const [username, setUsername] = useState(currentUser?.username || '');
     const [email, setEmail] = useState('');
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -75,9 +76,43 @@ function Page() {
         dispatch(signOutUser(currentUser))
     }
 
-    // useEffect( async () => {
-    //     console.log('Fetch Cart Details')
-    // }, [])
+    const handleUpdateUsername = async () => {
+        if(username.length === 0){
+            toast.success("Nothing to change!")
+            return;
+        }
+
+        if(username === currentUser?.username){
+            toast.success("Nothing to change!")
+            return;
+        }
+
+        try {
+          const response = await fetch('/api/update-username', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: currentUser?.email, 
+              username: username,
+            }),
+          });
+    
+          if (response.ok) {
+            const data = await response.json();
+            console.log("Success")
+            toast.success("Username updated successfully");
+        } else {
+            const errorData = await response.json();
+            console.log('Error updating username: ', errorData.message)
+            toast.error('Error updating username: ', errorData.message);
+        }
+    } catch (error) {
+          console.log('Error updating username: ', error)
+          toast.error('Error updating username: ', error);
+        }
+    };
 
     return (
         <div className='w-[100%] pt-4 absoute top-0'>
@@ -150,14 +185,14 @@ function Page() {
                                                             type="text" 
                                                             id='username' 
                                                             placeholder='@username' 
-                                                            value={username} 
+                                                            value={currentUser?.username || username} 
                                                             className={`${styles.button} w-[100%] bg-white bg-opacity-20`} 
                                                             onChange={(e) => setUsername(e.target.value)}
                                                         />
                                                     </div> 
                                                 </div>
                                                 <div className='flex flex-col items-center w-[100%]'>
-                                                    <button className={`${styles.button} w-[70%]`}>
+                                                    <button onClick={() => handleUpdateUsername()} className={`${styles.button} w-[70%]`}>
                                                         Save Changes
                                                     </button>
                                                 </div>
@@ -229,9 +264,9 @@ function Page() {
                                                             type="email" 
                                                             id='email' 
                                                             placeholder='default***@gmail.com' 
-                                                            value={email} 
                                                             className={`${styles.button} w-[92%] bg-white bg-opacity-20`} 
-                                                            onChange={(e) => setEmail(e.target.value)}
+                                                            value={currentUser?.email || email } 
+                                                            readOnly
                                                         />
                                                     </div>
                                                     <div className="flex flex-col mt-4 gap-2">
@@ -451,9 +486,9 @@ function Page() {
                                                                     type="email" 
                                                                     id='email' 
                                                                     placeholder='default***@gmail.com' 
-                                                                    value={email} 
                                                                     className={`${styles.button} w-[92%] bg-white bg-opacity-20`} 
-                                                                    onChange={(e) => setEmail(e.target.value)}
+                                                                    value={currentUser?.email || email } 
+                                                                    readOnly
                                                                 />
                                                             </div>
                                                             <div className="flex flex-col mt-4 gap-2">
@@ -485,7 +520,7 @@ function Page() {
                                                             </div>
                                                         </div>
                                                         <div className='flex flex-col items-center w-[100%]'>
-                                                            <button className={`${styles.button} w-[70%]`}>
+                                                            <button onClick={() => handlePasswordChange()} className={`${styles.button} w-[70%]`}>
                                                                 Save Changes
                                                             </button>
                                                         </div>
@@ -566,6 +601,10 @@ function Page() {
             <div className="bottom-0 w-[100vw]">
                 <Footer />  
             </div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div>
     )
 }

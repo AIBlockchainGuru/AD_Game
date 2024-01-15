@@ -9,12 +9,17 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
 import Footer from '../components/Home/Footer';
 import toast, { Toaster } from 'react-hot-toast';
+import { signIn, useSession } from 'next-auth/react'
 
 const Page = () => {
+    const session = useSession();
+    console.log(session);
+
     const router = useRouter();
     const { currentUser } = useSelector(state => state.user)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
     const dispatch = useDispatch();
     
     const handleSignIn = async (e) => {
@@ -70,13 +75,14 @@ const Page = () => {
             router.push("/");
         }
     }, [])
+
+    
     
   return (
     <>
         <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
             <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] bg-black bg-opacity-35 border border-white'>
-                <form 
-                    onSubmit={handleSignIn}
+                <div 
                     className='flex flex-col justify-center items-center gap-4'
                 >
                     <h1 className='text-xl text-left mb-3'>Sign In</h1>
@@ -95,7 +101,7 @@ const Page = () => {
                         className={`text-white placeholder:text-white border-none rounded-md w-[80%] py-2 px-4 bg-[#fff] bg-opacity-30`}
                     />
 
-                    <button className='bg-[#02A9F4] uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
+                    <button onClick={() => handleSignIn()} className='bg-[#02A9F4] uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
                         Sign In
                     </button>
 
@@ -105,15 +111,14 @@ const Page = () => {
                         </span>
                     </div>
                     
-                    <button className='bg-[#fff] flex justify-center bg-opacity-30 uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
+                    <button
+                     type='button'
+                     onClick={() => signIn("google")}
+                     className='bg-[#fff] flex justify-center bg-opacity-30 uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
                         <FcGoogle className='text-center mr-2 w-[20px] h-[20px]' />
-                        Sign Up with Google
+                        Sign In with Google
                     </button>
-                    <button className='bg-[#fff] flex justify-center bg-opacity-30 uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
-                        <FaFacebook className='text-[#02A9F4] rounded-full border-[2px] border-[#02A9F4] bg-white text-center mr-2 w-[20px] h-[20px]' />
-                        Sign Up with Facebook
-                    </button>
-                </form>
+                </div>
             </div>
             <div className='text-center mt-8'>
                 <Link href={'/'}>

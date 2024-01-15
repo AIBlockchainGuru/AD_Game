@@ -1,15 +1,21 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { styles } from '../utils/styles'
 import Link from 'next/link'
 import {useRouter} from "next/navigation";
 import Footer from '../components/Home/Footer'
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import toast, { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast';
+import { signIn, useSession } from 'next-auth/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInStart, signInSuccess, signInFailure } from '../../redux/userSlice';
 
 const Page = () => {
+    const session = useSession();
+    console.log(session);
     const router = useRouter();
+    const { currentUser } = useSelector(state => state.user)
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +23,6 @@ const Page = () => {
     
     const handleSignUp = async (e) => {
         e.preventDefault();
-
     
         // Check if passwords match
         if (password !== confirmPassword) {
@@ -72,14 +77,22 @@ const Page = () => {
             alert('Error during signup. Please try again.');
         }
     };
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(currentUser){
+            router.push("/");
+        }
+    }, [])
+    
     
     
   return (
     <>
         <div className="w-[100vw] h-[100vh] bg-cover bg-no-repeat bg-center flex flex-col items-center hero z-0">
             <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] bg-black bg-opacity-35 border border-white z-10'>
-                <form 
-                    onSubmit={handleSignUp}
+                <div 
                     className='flex flex-col justify-center items-center gap-4'
                 >
                     <h1 className='text-xl text-left mb-3'>Sign Up</h1>
@@ -110,7 +123,7 @@ const Page = () => {
                         <span className='text-[#D5D3EE]'>{" "}Terms of Services <span className='text-[#fff]'>{" "}and{" "}</span>Privacy Policy</span>
                     </div>
 
-                    <button type='submit' className='bg-[#02A9F4] uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
+                    <button onClick={() => handleSignUp()} className='bg-[#02A9F4] uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
                         Create a New Account
                     </button>
 
@@ -120,15 +133,11 @@ const Page = () => {
                         </span>
                     </div>
                     
-                    <button className='bg-[#fff] flex justify-center bg-opacity-30 uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
+                    <button onClick={() => signIn("google")} className='bg-[#fff] flex justify-center bg-opacity-30 uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
                         <FcGoogle className='text-center mr-2 w-[20px] h-[20px]' />
-                        Sign Up with Google
+                            Sign Up with Google
                     </button>
-                    <button className='bg-[#fff] flex justify-center bg-opacity-30 uppercase w-[80%] py-2 text-sm px-2 border-none rounded-md'>
-                        <FaFacebook className='text-[#02A9F4] rounded-full border-[2px] border-[#02A9F4] bg-white text-center mr-2 w-[20px] h-[20px]' />
-                        Sign Up with Facebook
-                    </button>
-                </form>
+                </div>
             </div>
             <div className='text-center mt-8'>
                 <Link href={'/'}>

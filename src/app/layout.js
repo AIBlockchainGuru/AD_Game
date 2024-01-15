@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Manrope } from 'next/font/google';
 import { Providers } from '../Providers/Provider';
+import AuthProvider from "./components/AuthProvider/AuthProvider"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${manrope.className} !bg-[#00171F] bg-no-repeat duration-300 text-[#fff]`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </Providers>
       </body>
     </html>
   )

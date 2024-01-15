@@ -44,20 +44,20 @@ function Shop() {
       
       <div className="w-[90%] m-auto mt-[100px] flex flex-col justify-evenly gap-7 !pb-20">
         <div className="flex flex-row gap-7">
-            <div className="w-[50%] mt-5 relative mb-1">
+            <div className="w-[40%] 800px:w-[50%] mt-5 relative mb-1">
                 <input 
                     type='text'
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search"
-                    className={`${styles.input} px-9 bg-transparent w-[100%] placeholder:text-white`} 
+                    className={`${styles.input} px-9 !py-2 bg-transparent w-[100%] placeholder:text-white`} 
                 />
                 <FaSearch
                     className="absolute bottom-2 left-2 z-1 cursor-pointer text-white"
                     size={20}
                 />
             </div>
-            <div className="w-[30%] mt-5 relative mb-1">
+            <div className="w-[20%] 800px:w-[30%] mt-5 relative mb-1">
                 <select
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
@@ -73,7 +73,7 @@ function Shop() {
                     ))}
                 </select>
                 <FaFilter
-                    className="absolute bottom-2 left-2 z-1 cursor-pointer text-white"
+                    className="absolute bottom-3 800px:bottom-2 left-2 z-1 cursor-pointer text-white"
                     size={20}
                 />
             </div>

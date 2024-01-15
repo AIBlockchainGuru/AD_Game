@@ -45,7 +45,7 @@ function CartCard({cart, total, setTotal}) {
               <div className='w-[209px]'>
                 <Image
                   src={thumbnailUrl}
-                  alt=''
+                  alt='...'
                   width={380}
                   height={380}
                   quality={100}
@@ -61,7 +61,7 @@ function CartCard({cart, total, setTotal}) {
                   </div>
                   <p className='text-xs line-clamp-5 mt-2'>{description && description[0]}</p>
                 </div>
-                <div className='w-[100%] flex justify-between'>
+                <div className='w-[100%] 800px:mt-0 mt-2 flex 800px:flex-row flex-col 800px:justify-between'>
                   <p className={`${staatliches.className} text-[1rem] uppercase`}>QTY: {qty}</p>
                   <p className={`${staatliches.className} text-[1rem] uppercase`}>{price} {" Rs"}</p>
                 </div>

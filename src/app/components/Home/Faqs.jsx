@@ -23,7 +23,7 @@ const Questions = [
 function Faqs() {
     return (
         <div className='w-[100vw] flex flex-col justify-center items-center'>
-            <div className="h-[10vh] w-[100vw] flex flex-col justify-center bg-black">
+            <div className="h-[10vh] w-[100vw] flex flex-col justify-center py-4 bg-black">
                 <h1 className={`${staatliches.className} text-center text-3xl 800px:text-4xl m-auto uppercase`}>Got any Questions?</h1>
             </div>
             <div className="w-[90%] flex flex-col 800px:flex-row items-center 800px:items-start justify-center m-auto pt-6">

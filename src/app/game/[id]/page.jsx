@@ -128,14 +128,14 @@ function Page({params}) {
                 alt=""
                 quality={100}
                 sizes="90vw, 150vh"
-                className="w-[100%] 800px:h-[1000px] h-[1200px] object-stretch rounded-2xl"
+                className="w-[100%] 800px:h-[1000px] h-[1500px] object-stretch rounded-2xl"
               />
-              <div className="absolute top-0 1100px:w-[85vw] w-[100vw] 800px:h-[1000px] h-[1200px] bg-black bg-opacity-80 rounded-xl"></div>
+              <div className="absolute top-0 1100px:w-[85vw] w-[100vw] 800px:h-[1000px] h-[1500px] bg-black bg-opacity-80 rounded-xl"></div>
             </div>
             <div className="w-[70vw] m-auto absolute pl-5 1100px:pl-32 top-[10vh] 800px:left-[9vw]">
               <div className="w-[100%] m-auto">
                 <h1
-                  className={` ${staatliches.className} text-left mb-12  m-auto uppercase text-3xl font-bold`}
+                  className={` ${staatliches.className} text-left mb-12  m-auto uppercase text-2xl 800px:text-3xl font-bold`}
                 >
                   {title}
                 </h1>
@@ -214,7 +214,7 @@ function Page({params}) {
                       <div className="w-[100%] text-right">
                         <button
                           onClick={handleAddToCart}
-                          className={`bg-transparent text-white py-1 800px:px-4 px-9 border-slate-50 border-small rounded-none text-sm 800px:text-lg 800px:w-[85%] 800px:mt-3 w-[60%] text-center`}
+                          className={`bg-transparent text-white py-1 800px:px-4 px-3 border-slate-50 border-small rounded-none text-sm 800px:text-lg 800px:w-[85%] 800px:mt-3 w-[60%] text-center`}
                         >
                           Add to cart
                         </button>

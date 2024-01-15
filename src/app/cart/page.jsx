@@ -91,10 +91,10 @@ function Page() {
               
               const data = await response.json();
               setCartData(data.cartItems);
-              console.log(data);
+            //   console.log(data);
               setLoading(false);
             } catch (error) {
-              console.error('Error fetching data:', error);
+            //   console.error('Error fetching data:', error);
               setError('Failed to fetch data');
               setLoading(false);
             }

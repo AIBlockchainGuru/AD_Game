@@ -10,6 +10,8 @@ import { staatliches } from "../../utils/font";
 import { MdDone, MdClose } from "react-icons/md";
 import Footer from "../../components/Home/Footer";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 const sections = [
   {
@@ -32,9 +34,12 @@ const sections = [
 function Page({params}) {
   const { id } = params;
 
+  const { currentUser } = useSelector(state => state.user);
+
   const [activeSection, setActiveSection] = useState(0);
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
 
   const {
     title,
@@ -54,6 +59,37 @@ function Page({params}) {
       sections[idx].isSelected = true;
     }
   };
+
+  const handleAddToCart = async () => {
+    if(!currentUser){
+      toast.error("Please Login to add to cart");
+      return;
+    }
+    try {
+      const response = await fetch('/api/add-to-cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: currentUser?.email, 
+          gameId: id,
+          quantity: quantity
+        }),
+      });
+
+      if (response.ok) {
+          const data = await response.json();
+          toast.success(data.message);
+      } else {
+          const errorData = await response.json();
+          console.log(errorData.message)
+          toast.error('Error Adding to Cart');
+      }
+    } catch (error) {
+        toast.error('Error Error Adding to Cart', error);
+    }
+  }
 
   useEffect(() => {
     setTimeout(() => {
@@ -161,15 +197,23 @@ function Page({params}) {
                         <input
                           type="number"
                           name="Quantity"
-                          min={0}
+                          min={1}
+                          readOnly={!available}
+                          value={quantity}
+                          onChange={(e) => {
+                            if(e.target.value <= 5){
+                              setQuantity(e.target.value)
+                            }
+                          }}
                           id="quantity"
                           placeholder="00"
-                          className={`text-white py-1 px-4 border-slate-50 border-small rounded-none text-lg h-6 800px:h-9 800px:mt-1 800px:w-[40%] w-[30%] bg-transparent text-right`}
+                          className={`text-white  py-1 px-4 border-slate-50 border-small rounded-none text-lg h-6 800px:h-9 800px:mt-1 800px:w-[40%] w-[30%] bg-transparent text-right`}
                         />
                       </div>
                       <br />
                       <div className="w-[100%] text-right">
                         <button
+                          onClick={handleAddToCart}
                           className={`bg-transparent text-white py-1 800px:px-4 px-9 border-slate-50 border-small rounded-none text-sm 800px:text-lg 800px:w-[85%] 800px:mt-3 w-[60%] text-center`}
                         >
                           Add to cart
@@ -281,6 +325,10 @@ function Page({params}) {
 
         </div>
       )}
+      <Toaster 
+        position="top-center"
+        reverseOrder={false}
+      />
     </>
   );
 }

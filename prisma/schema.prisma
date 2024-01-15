@@ -26,7 +26,7 @@ model Cart {
   id     Int    @id @default(autoincrement())
   gameId String?
   qty    Int?
-  userId Int   @unique
+  userId Int   
   user   User   @relation(fields: [userId], references: [id])
 }
 
@@ -35,7 +35,7 @@ model PaymentDetails {
   cardNumber  String?
   expiry      String?
   cvv         String?
-  userId      Int   @unique
+  userId      Int  @unique
   user        User   @relation(fields: [userId], references: [id])
 }
 
@@ -43,6 +43,6 @@ model Purchase {
   id     Int    @id @default(autoincrement())
   gameId String?
   qty    Int?
-  userId Int    @unique
+  userId Int    
   user   User   @relation(fields: [userId], references: [id])
 }

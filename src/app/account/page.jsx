@@ -9,7 +9,7 @@ import { staatliches } from '../utils/font';
 import { purchase } from '../utils/purchase';
 import PurchaseCard from '../components/Account/PurchaseCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { signOutUser, updateUserStart, updateUserSuccess, updateUserFailure } from '../../redux/userSlice';
+import { signOutUser, updateUserSuccess, updateUserFailure } from '../../redux/userSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '../components/Loader/Loader';
 
@@ -106,9 +106,9 @@ function Page() {
             dispatch(updateUserFailure(errorData.message))
             toast.error('Error updating username: ', errorData.message);
         }
-    } catch (error) {
-          dispatch(updateUserFailure(error))
-          toast.error('Error updating username: ', error);
+        } catch (error) {
+            dispatch(updateUserFailure(error))
+            toast.error('Error updating username: ', error);
         }
     };
 

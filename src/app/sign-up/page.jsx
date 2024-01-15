@@ -52,14 +52,23 @@ const Page = () => {
             } else {
                 try {
                     const errorData = await response.json();
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
                     toast.error(errorData.message || 'Signup failed');
                 } catch (jsonError) {
-                    console.error('Error parsing JSON:', jsonError);
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
+                    // console.error('Error parsing JSON:', jsonError);
                     toast.error('Signup failed. Please try again.');
                 }
             }
         } catch (error) {
-            console.error('Error during signup:', error);
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            // console.error('Error during signup:', error);
             alert('Error during signup. Please try again.');
         }
     };
@@ -67,8 +76,8 @@ const Page = () => {
     
   return (
     <>
-        <div className="w-[100vw] h-[100vh] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
-            <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] border border-white'>
+        <div className="w-[100vw] h-[100vh] bg-cover bg-no-repeat bg-center flex flex-col items-center hero z-0">
+            <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] bg-black bg-opacity-35 border border-white z-10'>
                 <form 
                     onSubmit={handleSignUp}
                     className='flex flex-col justify-center items-center gap-4'

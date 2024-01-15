@@ -45,15 +45,21 @@ const Page = () => {
             } else {
                 try {
                     const errorData = await response.json();
+                    setEmail('');
+                    setPassword('');
                     dispatch(signInFailure(errorData.message))
                     toast.error(errorData.message || 'Sign-in failed');
                 } catch (jsonError) {
-                    console.error('Error parsing JSON:', jsonError);
+                    setEmail('');
+                    setPassword('');
+                    // console.error('Error parsing JSON:', jsonError);
                     toast.error('Sign-in failed. Please try again.');
                 }
             }
         } catch (error) {
-            console.error('Error during sign-in:', error);
+            // console.error('Error during sign-in:', error);
+            setEmail('');
+            setPassword('');
             dispatch(signInFailure(error))
             toast.error('Error during sign-in. Please try again.');
         }
@@ -68,7 +74,7 @@ const Page = () => {
   return (
     <>
         <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
-            <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] border border-white'>
+            <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] bg-black bg-opacity-35 border border-white'>
                 <form 
                     onSubmit={handleSignIn}
                     className='flex flex-col justify-center items-center gap-4'
@@ -95,7 +101,7 @@ const Page = () => {
 
                     <div className="text-sm text-center">
                         <span className='text-[#02A9F4]'>
-                            <Link href={'#'}>Forgot Password{" "}</Link>
+                            <Link href={'#'}>Forgot Password?{" "}</Link>
                         </span>
                     </div>
                     

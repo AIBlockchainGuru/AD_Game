@@ -30,7 +30,7 @@ function CartCard({cart, total, setTotal}) {
 
   useEffect(() => {
     if(!isNaN(price)){
-      setTotal((total) => Number(total) + Number(price))
+      setTotal((total) => Number(total) + (Number(price) * Number(qty)))
     }
     
   }, [price])

@@ -21,8 +21,7 @@ const Page = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     
-    const handleSignUp = async (e) => {
-        e.preventDefault();
+    const handleSignUp = async () => {
     
         // Check if passwords match
         if (password !== confirmPassword) {
@@ -86,7 +85,38 @@ const Page = () => {
         }
     }, [])
     
-    
+    useEffect(() => {
+        const handleGoogleLogin = async () =>{
+            try {
+                const response = await fetch('/api/social-auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: session.data.user?.email,
+                    }),
+                });
+        
+                if (response.ok) {
+                    const data = await response.json();
+                    dispatch(signInSuccess(data.user));
+                    toast.success("Welcome back!");
+                    router.push("/");
+                }
+            } catch (error) {
+                // console.error('Error during sign-in:', error);
+                setEmail('');
+                setPassword('');
+                dispatch(signInFailure(error))
+                toast.error('Error during sign-in. Please try again.');
+            }
+        }
+
+        if(!currentUser && session.data?.user?.email){
+            handleGoogleLogin();
+        }
+    }, [session.data?.user?.email])
     
   return (
     <>

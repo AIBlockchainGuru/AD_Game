@@ -10,6 +10,7 @@
     "push_db": "prisma generate && prisma db push"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^1.0.7",
     "@nextui-org/react": "^2.2.9",
     "@prisma/client": "^5.7.1",
     "@reduxjs/toolkit": "^2.0.1",

@@ -26,7 +26,7 @@ export const games = [
             }
         ],
         price: 2000,
-        thumbnailUrl: '/assets/adnetwork-10.jpg',
+        thumbnailUrl: '/assets/adnetwork-12.png',
         cardUrl: '',
         available: true
     },
@@ -150,7 +150,7 @@ export const games = [
             }
         ],
         price: 2000,
-        thumbnailUrl: '/assets/adnetwork-10.jpg',
+        thumbnailUrl: '/assets/adnetwork-12.png',
         cardUrl: '',
         available: true
     },

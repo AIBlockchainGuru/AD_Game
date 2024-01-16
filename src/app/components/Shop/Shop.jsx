@@ -67,7 +67,7 @@ function Shop() {
                     Filter
                     </option>
                     {filterOptions.map((option) => (
-                    <option className="bg-transparent" key={option.value} value={option.value}>
+                    <option key={option.value} className="bg-transparent" value={option.value}>
                         {option.label}
                     </option>
                     ))}

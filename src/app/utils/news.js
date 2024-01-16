@@ -29,7 +29,7 @@ export const news = [
         In over a dozen hours spent in Dogtown, I have found an experience that surpasses the original game. I don’t want to delve into spoilers, but this game is more than worth picking up again.`, `Whether you have played Cyberpunk before and dropped it, or are interested in playing it for the first time, this game is worth every cent. CDPR fixed their game and made it better than I could’ve hoped.
         The fruits of their labor have paid off. I hope they carry these lessons into Cyberpunk’s sequel because I want more of this version of the game.`],
         genre: `news`,
-        thumbnailUrl: `/assets/adnetwork-3.jpg`,
+        thumbnailUrl: `/assets/adnetwork-12.png`,
         gameId: `NA`,
     },
 ]

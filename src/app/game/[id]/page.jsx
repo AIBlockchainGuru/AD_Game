@@ -111,7 +111,7 @@ function Page({params}) {
               alt=""
               width={1024}
               height={1024}
-              className="w-[100%] h-full 800px:object-stretch object-center z-1"
+              className="w-[100%] h-[100vh] 800px:object-cover object-center z-1"
               quality={100}
               sizes="100vw, 200vh"
             />

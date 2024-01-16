@@ -101,7 +101,7 @@ const Page = () => {
                 if (response.ok) {
                     const data = await response.json();
                     dispatch(signInSuccess(data.user));
-                    toast.success("Welcome back!");
+                    toast.success("Welcome!");
                     router.push("/");
                 }
             } catch (error) {

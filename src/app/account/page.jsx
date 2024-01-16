@@ -12,6 +12,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { signOutUser, updateUserSuccess, updateUserFailure } from '../../redux/userSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '../components/Loader/Loader';
+import { signOut, useSession } from 'next-auth/react'
+
 
 const navOptions = [
     {
@@ -42,6 +44,8 @@ const navOptions = [
 ]
 
 function Page() {
+    const session = useSession()
+    console.log(session)
 
     const { currentUser } = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -76,6 +80,7 @@ function Page() {
 
     const handleLogOut = () => {
         dispatch(signOutUser(currentUser))
+        signOut()
     }
 
     const handleUpdateUsername = async () => {

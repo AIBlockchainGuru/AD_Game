@@ -69,6 +69,8 @@ function Page() {
         setCvv(limitedInput);
     };
 
+
+
     useEffect(() => {
         const fetchData = async () => {
             if(!currentUser){
@@ -95,13 +97,13 @@ function Page() {
               setLoading(false);
             } catch (error) {
             //   console.error('Error fetching data:', error);
-              setError('Failed to fetch data');
+              toast.error('Failed to fetch data');
               setLoading(false);
             }
         };
-
+        
         fetchData();
-    }, [])
+    }, [cartData])
 
     return (
         <>
@@ -135,7 +137,7 @@ function Page() {
                                                     cartData && cartData.length !== 0 && cartData.map((curr) => (
                                                         <>
                                                             <div key={curr.gameId} className='mb-8'>
-                                                                <CartCard cart={curr} total={Number(total)} setTotal={setTotal} />
+                                                                <CartCard cart={curr} total={Number(total)} setTotal={setTotal} setCartData={setCartData} />
                                                             </div>
                                                         </>
                                                     ))
@@ -342,7 +344,7 @@ function Page() {
                                                             cartData && cartData.length !== 0 && cartData.map((curr) => (
                                                                 <>
                                                                     <div key={curr.gameId} className='mb-8'>
-                                                                        <CartCard cart={curr} total={Number(total)} setTotal={setTotal} />
+                                                                        <CartCard cart={curr} total={Number(total)} setTotal={setTotal} setCartData={setCartData} />
                                                                     </div>
                                                                 </>
                                                             ))

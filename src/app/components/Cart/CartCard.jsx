@@ -3,10 +3,14 @@ import { games } from '../../utils/games';
 import Image from 'next/image';
 import { staatliches } from '../../utils/font';
 import Loader from '../Loader/Loader';
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
-function CartCard({cart, total, setTotal}) {
+function CartCard({cart, total, setTotal, setCartData}) {
   const { gameId, qty } = cart;
   
+  const { currentUser } = useSelector(state => state.user );
+
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,6 +39,32 @@ function CartCard({cart, total, setTotal}) {
     
   }, [price])
 
+  const handleDelete = async () => {
+    console.log("Delete Clicked!")
+    if(currentUser){
+      try {
+        const response = await fetch('/api/remove-item', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: currentUser?.email, deleteItemId: gameId}),
+        });
+  
+        if (!response.ok) {
+          toast.error('Failed to delete!');
+        }
+        
+        const data = await response.json();
+        setCartData(data.cartItems);
+        toast.success("Game removed from cart")
+      } catch (error) {
+      //   console.error('Error fetching data:', error);
+        toast.error('Failed to fetch data');
+      }
+    }
+  }
+
   return (
     <>
       {
@@ -57,7 +87,7 @@ function CartCard({cart, total, setTotal}) {
                 <div>
                   <div className='flex justify-between'>
                     <h1 className={`${staatliches.className} w-[80%] text-lg line-clamp-2`}>{title}</h1>
-                    <h1 className='text-lg cursor-pointer'>x</h1>
+                    <h1 onClick={() => handleDelete()} className='text-lg px-1 py-1 cursor-pointer'>x</h1>
                   </div>
                   <p className='text-xs line-clamp-5 mt-2'>{description && description[0]}</p>
                 </div>

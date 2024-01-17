@@ -12,6 +12,9 @@ import Footer from "../../components/Home/Footer";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+// import { reviews } from "../../utils/reviews";
+import ReviewSlider from "../../components/Game/ReviewSlider";
+import user from '../../../../public/assets/noavatar.png';
 
 const sections = [
   {
@@ -31,15 +34,19 @@ const sections = [
   },
 ];
 
-function Page({params}) {
+function Page({ params }) {
   const { id } = params;
 
-  const { currentUser } = useSelector(state => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   const [activeSection, setActiveSection] = useState(0);
   const [game, setGame] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
+  const [review, setReview] = useState('');
+  const [addReview, setAddReview] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [reloadReviews, setReloadReviews] = useState(false);
 
   const {
     title,
@@ -61,35 +68,80 @@ function Page({params}) {
   };
 
   const handleAddToCart = async () => {
-    if(!currentUser){
+    if (!currentUser) {
       toast.error("Please Login to add to cart");
       return;
     }
     try {
-      const response = await fetch('/api/add-to-cart', {
+      const response = await fetch("/api/add-to-cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: currentUser?.email,
+          gameId: id,
+          quantity: quantity,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        toast.success(data.message);
+      } else {
+        const errorData = await response.json();
+        console.log(errorData.message);
+        toast.error("Error Adding to Cart");
+      }
+    } catch (error) {
+      toast.error("Error Error Adding to Cart", error);
+    }
+  };
+
+  const handleAddReview = async () => {
+    if (addReview === false) {
+      setReview('');
+      setAddReview(true);
+      return;
+    }
+    try {
+      const firstName = currentUser?.firstName;
+      const lastName = currentUser?.lastName ? currentUser?.lastName : "";
+      const fullName = `${firstName} ${lastName}`
+      const response = await fetch('/api/add-review', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: currentUser?.email, 
+          email: currentUser?.email,
           gameId: id,
-          quantity: quantity
+          title: fullName,
+          review: review
         }),
       });
-
+  
       if (response.ok) {
-          const data = await response.json();
-          toast.success(data.message);
+        const result = await response.json();
+        toast.success('Review added');
+        setReview('');
+        setAddReview(false);
       } else {
-          const errorData = await response.json();
-          console.log(errorData.message)
-          toast.error('Error Adding to Cart');
+        const error = await response.json();
+        console.error('Error adding review:', error);
+        toast.error('Failed to add review');
+        setReview('');
+        setAddReview(false);
       }
     } catch (error) {
-        toast.error('Error Error Adding to Cart', error);
+      console.error('Error adding review:', error);
+      toast.error('Failed to add review');
+      setReview('');
+      setAddReview(false);
     }
-  }
+    setReview('');
+    setAddReview(false);
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -98,17 +150,43 @@ function Page({params}) {
     const game = games.filter((game) => game.id === id);
     setGame(game[0]);
   }, []);
+
+  useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const response = await fetch('/api/get-reviews', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ gameId: id }),
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          setReviews(result.reviews);
+          setReloadReviews(!reloadReviews);
+        } else {
+          console.error('Error fetching reviews:', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+      }
+    };
+
+    getReviews();
+  }, [id, reviews, reloadReviews]);
+
   return (
     <>
-      { 
-        isLoading ? (
-          <Loader />
+      {isLoading ? (
+        <Loader />
       ) : (
         <div className="w-full h-full">
           <div className="z-10">
             <Image
               src={thumbnailUrl}
-              alt=""
+              alt=".."
               width={1024}
               height={1024}
               className="w-[100%] h-[100vh] 800px:object-cover object-center z-1"
@@ -125,7 +203,7 @@ function Page({params}) {
                 src={cardUrl}
                 width={1048}
                 height={1048}
-                alt=""
+                alt=".."
                 quality={100}
                 sizes="90vw, 150vh"
                 className="w-[100%] 800px:h-[1000px] h-[1500px] object-stretch rounded-2xl"
@@ -143,7 +221,7 @@ function Page({params}) {
                   <div className="1100px:w-[50%] w-[90vw]">
                     <Image
                       src={thumbnailUrl}
-                      alt=""
+                      alt="..."
                       width={380}
                       height={380}
                       quality={100}
@@ -153,24 +231,23 @@ function Page({params}) {
                   </div>
                   <div className="w-[90vw] 800px:w-[50%] flex 800px:flex-col justify-between">
                     <div>
-                    <p
-                      className={`${staatliches.className} 800px:text-xl text-sm text-gray-400 font-bold text-left`}
-                    >
-                      OUR PRICE
-                    </p>
-                    <p
-                      className={`${staatliches.className} font-bold 800px:text-9xl text-6xl text-left mt-5`}
-                    >
-                      {price}
-                      <span
-                        className={`${staatliches.className} 800px:text-3xl text-sm text-gray-400 ml-1 text-left`}
+                      <p
+                        className={`${staatliches.className} 800px:text-xl text-sm text-gray-400 font-bold text-left`}
                       >
-                        RS
-                      </span>
-                    </p>
+                        OUR PRICE
+                      </p>
+                      <p
+                        className={`${staatliches.className} font-bold 800px:text-9xl text-6xl text-left mt-5`}
+                      >
+                        {price}
+                        <span
+                          className={`${staatliches.className} 800px:text-3xl text-sm text-gray-400 ml-1 text-left`}
+                        >
+                          RS
+                        </span>
+                      </p>
                     </div>
                     <div className="flex flex-col items-end">
-                    
                       <div
                         className={`${staatliches.className} font-bold 800px:text-xl uppercase`}
                       >
@@ -201,8 +278,8 @@ function Page({params}) {
                           readOnly={!available}
                           value={quantity}
                           onChange={(e) => {
-                            if(e.target.value <= 5){
-                              setQuantity(e.target.value)
+                            if (e.target.value <= 5) {
+                              setQuantity(e.target.value);
                             }
                           }}
                           id="quantity"
@@ -289,46 +366,65 @@ function Page({params}) {
                     </div>
                   </div>
                 )}
-                {
-                  activeSection == 2 && (
-                    <>
-                      <h1 className="text-center text-xl">Review</h1>
-                    </>
-                  )
-                }
+                {activeSection == 2 && (
+                  <>
+                    <div className="px-5 mt-2 1100px:mt-3">
+                      {addReview ? (
+                        <div className="w-[90%] mx-auto">
+                          <div className="flex gap-x-3 items-center py-3">
+                            <Image src={user} alt={"..."} width={36} height={36} className='w-[36px] h-[36px] object-cover rounded-full' />
+                            <p className={`${staatliches.className} text-lg`}>{currentUser?.firstName} {" "} {currentUser?.lastName}</p>
+                          </div>
+                          <textarea
+                            name="review"
+                            id="review"
+                            className="bg-white resize-none bg-opacity-20 w-[100%] h-[240px] mx-auto border-none"
+                            maxLength={500}
+                            onChange={(e)=>setReview(e.target.value)}
+                            placeholder="Type Something to review"
+                          ></textarea>
+                        </div>
+                      ) : (
+                        <>
+                          {
+                            reviews && reviews.length > 0 ? (
+                              <ReviewSlider reviews={reviews} />
+                            ) : (
+                              <div className="w-full h-20 flex flex-col">
+                                <p className={`${staatliches.className} text-center text-xl`}>No reviews to display</p>
+                              </div>
+                            )
+                          }
+                        </>
+                      )}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
-            {
-              activeSection == 2 && (
-                <div className="w-[90vw] 800px:absolute 800px:left-[5%] 800px:bottom-[-20vh] text-center !m-auto !mb-0 800px:!mb-10 !pt-10">
-                  <Link href={'/'}>
-                      <button className={`${styles.button}`}>
-                        Add Review
-                      </button>
-                  </Link>
-                </div>
-              )
-            }
+            {activeSection == 2 && currentUser && (
+              <div className="w-[90vw] 800px:absolute 800px:left-[5%] 800px:bottom-[-20vh] text-center !m-auto !mb-0 800px:!mb-10 !pt-10">
+                <button
+                  className={`${styles.button} cursor-pointer`}
+                  onClick={() => handleAddReview()}
+                >
+                  {addReview ? "Save Review" : "Add Review"}
+                </button>
+              </div>
+            )}
             <div className="w-[90vw] 800px:absolute 800px:left-[5%] 800px:bottom-[-30vh] text-center !m-auto !mb-10 800px:mb-0 !pt-10">
-              <Link href={'/'}>
-                  <button className={`${styles.button}`}>
-                    Return
-                  </button>
+              <Link href={"/"}>
+                <button className={`${styles.button}`}>Return</button>
               </Link>
             </div>
           </div>
 
-
           <div className="w-[100vw]">
             <Footer />
           </div>
-
         </div>
       )}
-      <Toaster 
-        position="top-center"
-        reverseOrder={false}
-      />
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }

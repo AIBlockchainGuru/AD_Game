@@ -30,13 +30,20 @@ model Cart {
   user   User   @relation(fields: [userId], references: [id])
 }
 
+model Reviews {
+  id     Int    @id @default(autoincrement())
+  gameId String
+  review String
+  title String
+  avatar String?
+  userId Int
+}
+
 model PaymentDetails {
-  id          Int    @id @default(autoincrement())
-  cardNumber  String?
-  expiry      String?
-  cvv         String?
-  userId      Int  @unique
-  user        User   @relation(fields: [userId], references: [id])
+  id               Int    @id @default(autoincrement())
+  paymentResponse  String?
+  userId           Int  @unique
+  user             User   @relation(fields: [userId], references: [id])
 }
 
 model Purchase {

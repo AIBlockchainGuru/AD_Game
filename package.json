@@ -12,9 +12,13 @@
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
     "@nextui-org/react": "^2.2.9",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/react-paypal-js": "^8.1.3",
     "@prisma/client": "^5.7.1",
     "@reduxjs/toolkit": "^2.0.1",
+    "axios": "^1.6.5",
     "bcryptjs": "^2.4.3",
+    "flowbite-react": "^0.7.2",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",
     "next-auth": "^4.24.5",

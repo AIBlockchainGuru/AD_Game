@@ -20,6 +20,8 @@ const Page = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     
     const handleSignUp = async () => {
     
@@ -31,9 +33,8 @@ const Page = () => {
             return;
         }
 
-        if(password === ''){
-            toast.error('Please enter your password');
-            setConfirmPassword('');
+        if(password === '' || firstName === '' || lastName === '' || email === ''){
+            toast.error('Please fill all the details');
             return;
         }
     
@@ -44,6 +45,8 @@ const Page = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
                     email: email,
                     password: password,
                 }),
@@ -95,6 +98,7 @@ const Page = () => {
                     },
                     body: JSON.stringify({
                         email: session.data.user?.email,
+                        name: session.data.user?.name,
                     }),
                 });
         
@@ -126,8 +130,25 @@ const Page = () => {
                     className='flex flex-col justify-center items-center gap-4'
                 >
                     <h1 className='text-xl text-left mb-3'>Sign Up</h1>
+                    <div className="w-[80%] flex gap-2">
+                        <input 
+                            type="text"  
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder='First Name'
+                            className={`text-white placeholder:text-white border-none rounded-md w-[49%] py-2 px-4 bg-[#fff] bg-opacity-30`}
+                        />
+                        <input 
+                            type="text"  
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder='Last Name'
+                            className={`text-white placeholder:text-white border-none rounded-md w-[49%] py-2 px-4 bg-[#fff] bg-opacity-30`}
+                        />
+                    </div>
                     <input 
                         type="text"  
+                        required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder='Email'
@@ -135,6 +156,7 @@ const Page = () => {
                     />
                     <input 
                         type="password"
+                        required
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder='Password'
@@ -142,6 +164,7 @@ const Page = () => {
                     />
                     <input 
                         type="password"
+                        required
                         value={confirmPassword}
                         placeholder='Confirm Password'
                         onChange={(e) => setConfirmPassword(e.target.value)}

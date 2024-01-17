@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export async function POST(req: NextRequest) {
 
   const reqBody = await req.json();
-  const { email } = reqBody;
+  const { name, email } = reqBody;
 
   try {
     const existingUser = await prisma.user.findFirst({
@@ -21,9 +21,18 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ message: 'Login successful', user: existingUser }, { status: 200 });
     }
 
+    const usersname = name.split(" ");
+    const firstName = usersname[0];
+    var lastName = null;
+    if(usersname.length > 1){
+      lastName = usersname[usersname.length - 1];
+    }
+
     // Creating a new user
     const newUser = await prisma.user.create({
       data: {
+        firstName: firstName,
+        lastName: lastName,
         email: email,
       },
     });

@@ -13,7 +13,6 @@ import { signIn, useSession } from 'next-auth/react'
 
 const Page = () => {
     const session = useSession();
-    console.log(session);
 
     const router = useRouter();
     const { currentUser } = useSelector(state => state.user)
@@ -137,7 +136,7 @@ const Page = () => {
 
                     <div className="text-sm text-center">
                         <span className='text-[#02A9F4]'>
-                            <Link href={'#'}>Forgot Password?{" "}</Link>
+                            <Link href={'/forgot-password'}>Forgot Password?{" "}</Link>
                         </span>
                     </div>
                     

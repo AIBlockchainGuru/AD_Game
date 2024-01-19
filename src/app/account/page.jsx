@@ -13,7 +13,8 @@ import { signOutUser, updateUserSuccess, updateUserFailure } from '../../redux/u
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from '../components/Loader/Loader';
 import { signOut, useSession } from 'next-auth/react'
-
+import Heading from '../components/Heading';
+import Avatar from 'react-avatar';
 
 const navOptions = [
     {
@@ -188,6 +189,9 @@ function Page() {
 
     return (
         <>
+            <Heading 
+                title='Account'
+            />
             {
                 loading ? (
                     <div className="">
@@ -238,27 +242,12 @@ function Page() {
                                                         <div className='w-[90%] m-auto h-[70%] mt-10 flex flex-col gap-2 justify-between'>
                                                             <div className='w-[100%] flex flex-col gap-2 justify-center items-center'>
                                                                 <div className="relative">
-                                                                    <Image 
-                                                                        src='/assets/noavatar.png'
-                                                                        alt='Profile'
-                                                                        width={120}
-                                                                        height={120}
-                                                                        className='w-[120px] h-[120px] cursor-pointer  rounded-full'
-                                                                    />
-                                                                    <input 
-                                                                        type="file" 
-                                                                        name=""
-                                                                        id='avatar'
-                                                                        className='hidden'
-                                                                        onChange={imageHandler}
-                                                                        accept='image/png, image/jpg, image/jpeg, image/webp'
+                                                                    <Avatar 
+                                                                        name={`${currentUser?.firstName} ${currentUser?.lastName}` || currentUser.email}
+                                                                        round={true}
+                                                                        size='150'  
                                                                     />
                                                                 </div>
-                                                                <button 
-                                                                    type='button'
-                                                                    name=''
-                                                                    className={`${styles.button} mt-4`}
-                                                                >Change Avatar</button>
                                                                 <div className='w-[90%] mt-6'>
                                                                     <input 
                                                                         type="text" 
@@ -460,27 +449,12 @@ function Page() {
                                                                 <div className='w-[90%] m-auto h-[70%] mt-10 flex flex-col gap-2 justify-between'>
                                                                     <div className='w-[100%] flex flex-col gap-2 justify-center items-center'>
                                                                         <div className="relative">
-                                                                            <Image 
-                                                                                src='/assets/noavatar.png'
-                                                                                alt=''
-                                                                                width={120}
-                                                                                height={120}
-                                                                                className='w-[120px] h-[120px] cursor-pointer  rounded-full'
-                                                                            />
-                                                                            <input 
-                                                                                type="file" 
-                                                                                name=""
-                                                                                id='avatar'
-                                                                                className='hidden'
-                                                                                onChange={imageHandler}
-                                                                                accept='image/png, image/jpg, image/jpeg, image/webp'
-                                                                            />
+                                                                        <Avatar 
+                                                                            name={`${currentUser?.firstName} ${currentUser?.lastName}` || currentUser.email}
+                                                                            round={true}
+                                                                            size='150'  
+                                                                        />
                                                                         </div>
-                                                                        <button 
-                                                                            type='button'
-                                                                            name=''
-                                                                            className={`${styles.button} mt-4`}
-                                                                        >Change Avatar</button>
                                                                         <div className='w-[90%] mt-6'>
                                                                             <input 
                                                                                 type="text" 

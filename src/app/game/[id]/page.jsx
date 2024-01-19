@@ -15,6 +15,8 @@ import toast, { Toaster } from "react-hot-toast";
 // import { reviews } from "../../utils/reviews";
 import ReviewSlider from "../../components/Game/ReviewSlider";
 import user from '../../../../public/assets/noavatar.png';
+import Heading from "../../components/Heading";
+import Avatar from "react-avatar";
 
 const sections = [
   {
@@ -179,6 +181,11 @@ function Page({ params }) {
 
   return (
     <>
+      <Heading 
+        title="Game"
+        description=""
+        keywords=""
+      />
       {isLoading ? (
         <Loader />
       ) : (
@@ -372,7 +379,11 @@ function Page({ params }) {
                       {addReview ? (
                         <div className="w-[90%] mx-auto">
                           <div className="flex gap-x-3 items-center py-3">
-                            <Image src={user} alt={"..."} width={36} height={36} className='w-[36px] h-[36px] object-cover rounded-full' />
+                            <Avatar 
+                              name={`${currentUser?.firstName} ${currentUser?.lastName}` || currentUser.email}
+                              round={true}
+                              size='36'  
+                            />
                             <p className={`${staatliches.className} text-lg`}>{currentUser?.firstName} {" "} {currentUser?.lastName}</p>
                           </div>
                           <textarea
@@ -413,8 +424,8 @@ function Page({ params }) {
               </div>
             )}
             <div className="w-[90vw] 800px:absolute 800px:left-[5%] 800px:bottom-[-30vh] text-center !m-auto !mb-10 800px:mb-0 !pt-10">
-              <Link href={"/"}>
-                <button className={`${styles.button}`}>Return</button>
+              <Link href={`${addReview ? '#' : '/'}`}>
+                <button onClick={() => setAddReview(false)} className={`${styles.button}`}>Return</button>
               </Link>
             </div>
           </div>

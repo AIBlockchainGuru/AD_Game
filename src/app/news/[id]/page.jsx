@@ -8,6 +8,7 @@ import { staatliches } from '../../utils/font';
 import Footer from '../../components/Home/Footer';
 import Link from 'next/link';
 import { styles } from '../../utils/styles';
+import Heading from '../../components/Heading';
 
 function Page({params}) {
     const { id } = params;
@@ -26,6 +27,11 @@ function Page({params}) {
 
     return (
         <>
+            <Heading 
+                title='News'
+                description=''
+                keywords=''
+            />
             {
                 isLoading ? (
                     <Loader />

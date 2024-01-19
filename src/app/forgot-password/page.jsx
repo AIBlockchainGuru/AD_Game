@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {useRouter} from "next/navigation";
 import toast, { Toaster } from 'react-hot-toast';
 import Footer from '../components/Home/Footer';
+import Heading from '../components/Heading';
 
 const Page = () => {
     const router = useRouter();
@@ -42,6 +43,11 @@ const Page = () => {
       };
   return (
     <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
+        <Heading
+          title='Reset Password'
+          description=''
+          keywords=''
+        />
         <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] bg-black bg-opacity-35 border border-white'>
             <div 
                 className='flex flex-col justify-center items-center gap-4'

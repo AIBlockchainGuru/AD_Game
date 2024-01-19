@@ -8,11 +8,17 @@ import Giveaways from './components/Home/Giveaways';
 import Faqs from './components/Home/Faqs';
 import Footer from './components/Home/Footer';
 import { Toaster } from 'react-hot-toast';
+import Heading from './components/Heading';
 
 export default function Home() {
   return (
     <NextUIProvider>
       <div className="text-[15px]">
+        <Heading
+          title='Home'
+          description=''
+          keywords=''
+        />
         <Hero />
         <About />
         <Releases />

@@ -7,10 +7,16 @@ import programming from '../../../public/assets/adnetwork-programming.jpg';
 import Image from 'next/image';
 import { Divider } from '@nextui-org/react';
 import { staatliches } from '../utils/font';
+import Heading from '../components/Heading';
 
 function Page() {
     return (
         <>
+            <Heading
+                title="Support"
+                description=''
+                keywords=''
+            />
             <div className='w-[100%] support'>
                 <div className="w-[90%] m-auto">
                     <Header />

@@ -10,6 +10,7 @@ import { FaFacebook } from 'react-icons/fa';
 import Footer from '../components/Home/Footer';
 import toast, { Toaster } from 'react-hot-toast';
 import { signIn, useSession } from 'next-auth/react'
+import Heading from '../components/Heading';
 
 const Page = () => {
     const session = useSession();
@@ -109,6 +110,11 @@ const Page = () => {
     
   return (
     <>
+        <Heading
+            title="Sign In"
+            description=''
+            keywords=''
+        />
         <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
             <div className='w-[90%] h-auto mt-[30px] 1100px:mt-[50px] p-6 800px:w-[75%] 1100px:w-[350px] bg-black bg-opacity-35 border border-white'>
                 <div 

@@ -16,6 +16,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import Loader from '../components/Loader/Loader';
+import Heading from '../components/Heading';
 
 function Page() {
 
@@ -107,6 +108,11 @@ function Page() {
 
     return (
         <>
+            <Heading 
+                title='Cart'
+                description=''
+                keywords=''
+            />
             {
                 loading ? (
                     <Loader />

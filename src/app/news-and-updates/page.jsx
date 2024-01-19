@@ -10,6 +10,7 @@ import { giveawayGames } from '../utils/giveawayGames';
 import { giveawayWinner } from '../utils/giveawayWinner';
 import Footer from '../components/Home/Footer'
 import { staatliches } from '../utils/font';
+import Heading from '../components/Heading';
 
 const GIVEAWAY_DESCRIPTION = `Participating in our giveaways becomes even more exciting when you share them with friends. 
 Not only does it create a sense of community, but it also boosts your chances of winning. 
@@ -18,6 +19,11 @@ So, feel free to spread the word and increase your odds of success!`
 function Page() {
     return (
         <div className='w-[100%] h-[100%] pt-4 absoute top-0 news'>
+            <Heading
+                title='News and Updates'
+                description=''
+                keywords=''
+            />
             <div className="w-[90%] h-[10vh] m-auto">
                 <Header />
             </div>

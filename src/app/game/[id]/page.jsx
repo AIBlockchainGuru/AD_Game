@@ -182,7 +182,7 @@ function Page({ params }) {
   return (
     <>
       <Heading 
-        title="Game"
+        title=""
         description=""
         keywords=""
       />

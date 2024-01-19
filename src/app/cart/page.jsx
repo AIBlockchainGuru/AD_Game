@@ -109,9 +109,9 @@ function Page() {
     return (
         <>
             <Heading 
-                title='Cart'
-                description=''
-                keywords=''
+                title='Your Gaming Cart - Secure Checkout at AD Network'
+                description={`Ready to complete your purchase? Review your selections in AD Network's secure gaming cart and get closer to your next epic gaming experience.`}
+                keywords={`Gaming Cart, AD Network Checkout, Secure Purchase, Online Gaming Shop, Game Cart`}
             />
             {
                 loading ? (

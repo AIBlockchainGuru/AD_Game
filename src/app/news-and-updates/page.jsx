@@ -20,9 +20,9 @@ function Page() {
     return (
         <div className='w-[100%] h-[100%] pt-4 absoute top-0 news'>
             <Heading
-                title='News and Updates'
-                description=''
-                keywords=''
+                title='AD Network News - Latest Gaming Trends & Updates'
+                description={`Stay ahead in the gaming world with AD Network News. Get the latest updates, trends, and insights in the gaming industry, tailored for true gamers.`}
+                keywords={`Gaming News, AD Network Updates, Latest Gaming Trends, Gamer Insights, Gaming Community News`}
             />
             <div className="w-[90%] h-[10vh] m-auto">
                 <Header />
@@ -38,7 +38,7 @@ function Page() {
                             <div key={curr.id} className="w-[90%] 800px:w-[503px] mx-auto">
                                 <Image
                                     src={curr.thumbnailUrl}
-                                    alt=''
+                                    alt='...'
                                     width={320}
                                     height={320}
                                     className='w-[503px] h-[371px] object-cover rounded-xl'

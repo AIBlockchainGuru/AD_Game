@@ -126,7 +126,7 @@ const Page = () => {
   return (
     <>
         <Heading
-            title="Sign Up"
+            title=""
             description=''
             keywords=''
         />

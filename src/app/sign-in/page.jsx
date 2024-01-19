@@ -111,7 +111,7 @@ const Page = () => {
   return (
     <>
         <Heading
-            title="Sign In"
+            title=""
             description=''
             keywords=''
         />

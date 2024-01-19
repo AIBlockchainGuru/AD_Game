@@ -44,7 +44,7 @@ const Page = () => {
   return (
     <div className="h-[100vh] w-[100vw] bg-cover bg-no-repeat bg-center flex flex-col items-center hero">
         <Heading
-          title='Reset Password'
+          title=''
           description=''
           keywords=''
         />

@@ -28,7 +28,7 @@ function Page({params}) {
     return (
         <>
             <Heading 
-                title='News'
+                title=''
                 description=''
                 keywords=''
             />
@@ -39,11 +39,11 @@ function Page({params}) {
                     <>
                     <div className="w-full h-full">
                         <div
-                            className="z-2 relative h-[175vh] 800px:h-[200vh] bg-cover bg-center"
+                            className="z-2 relative h-[200vh] md:h-[180vh] lg:h-[200vh]  bg-cover bg-center"
                             style={{ backgroundImage: `url(${thumbnailUrl})` }}
                         >
                         </div>
-                        <div className='bg-black w-full h-[175vh] 800px:h-[200vh] bg-opacity-40 absolute top-0'></div>
+                        <div className='bg-black w-full h-[200vh] md:h-[180vh] lg:h-[200vh] bg-opacity-40 absolute top-0'></div>
                         <div className="w-[90%] m-auto">
                             <Header />
                         </div>
@@ -56,7 +56,7 @@ function Page({params}) {
                                 {
                                     description.map((desc, index) => (
                                         <div key={`D00${index+1}`}>
-                                            <p className='text-xs 800px:text-sm 1100px:text-lg'>{desc}</p>
+                                            <p className='text-xs 800px:text-lg'>{desc}</p>
                                             <br />
                                         </div>
                                     ))

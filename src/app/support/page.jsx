@@ -13,9 +13,9 @@ function Page() {
     return (
         <>
             <Heading
-                title="Support"
-                description=''
-                keywords=''
+                title="AD Network Support - 24/7 Customer Assistance for Gamers"
+                description={`Experience unparalleled customer support with AD Network. Our dedicated team is available 24/7 to assist you with your gaming queries and needs.`}
+                keywords={`AD Network Support, Customer Assistance, 24/7 Gaming Support, Gamer Help, Game Support Services`}
             />
             <div className='w-[100%] support'>
                 <div className="w-[90%] m-auto">

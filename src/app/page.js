@@ -15,9 +15,9 @@ export default function Home() {
     <NextUIProvider>
       <div className="text-[15px]">
         <Heading
-          title='AD Network - Premier Gaming Hub for Latest Titles & Memberships'
-          description={`Join AD Network, the ultimate gaming community hub. Discover the latest games, exclusive memberships, and a world where gaming is not just a hobby, but a lifestyle.`}
-          keywords='AD Network, Gaming Community, Latest Games, Game Memberships, Gaming Lifestyle'
+          title='AD Gaming - Premier Gaming Hub for Latest Titles & Memberships'
+          description={`Join AD Gaming, the ultimate gaming community hub. Discover the latest games, exclusive memberships, and a world where gaming is not just a hobby, but a lifestyle.`}
+          keywords='AD Gaming, Gaming Community, Latest Games, Game Memberships, Gaming Lifestyle'
         />
         <Hero />
         <About />

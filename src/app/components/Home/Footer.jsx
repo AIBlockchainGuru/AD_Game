@@ -18,7 +18,7 @@ function Footer() {
             />
         </div>
         <div className="w-[90%] m-auto flex justify-center items-center">
-            <span className='text-sm mt-5'>2023 AD Network. All Rights Reserved.</span>
+            <span className='text-sm mt-5'>2023 AD Gaming. All Rights Reserved.</span>
         </div>
     </div>
   )

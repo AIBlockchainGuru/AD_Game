@@ -4,9 +4,8 @@ import { NextRequest, NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
-
   const reqBody = await req.json();
-  const { name, email } = reqBody;
+  const { name, email, googleId } = reqBody;  // Add googleId if you're receiving it
 
   try {
     const existingUser = await prisma.user.findFirst({
@@ -18,28 +17,37 @@ export async function POST(req: NextRequest) {
     });
 
     if (existingUser) {
-        return NextResponse.json({ message: 'Login successful', user: existingUser }, { status: 200 });
+      // Update the user's information if necessary
+      const updatedUser = await prisma.user.update({
+        where: { id: existingUser.id },
+        data: {
+          email: email || existingUser.email,  // Update email if provided
+        },
+      });
+      return NextResponse.json({ message: 'Login successful', user: updatedUser }, { status: 200 });
     }
 
-    const usersname = name.split(" ");
-    const firstName = usersname[0];
-    var lastName = null;
-    if(usersname.length > 1){
-      lastName = usersname[usersname.length - 1];
+    // Handle name for new user
+    let firstName = null;
+    let lastName = null;
+    if (name) {
+      const nameParts = name.trim().split(/\s+/);
+      firstName = nameParts[0];
+      lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : null;
     }
 
     // Creating a new user
     const newUser = await prisma.user.create({
       data: {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
+        firstName,
+        lastName,
+        email,
       },
     });
 
     return NextResponse.json({ message: 'User created successfully', user: newUser }, {status: 200});
   } catch (error) {
-    console.error('Error during signup:', error);
+    console.error('Error during Google sign-in:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, {status: 500});
   } finally {
     await prisma.$disconnect();

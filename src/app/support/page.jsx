@@ -13,9 +13,9 @@ function Page() {
     return (
         <>
             <Heading
-                title="AD Network Support - 24/7 Customer Assistance for Gamers"
-                description={`Experience unparalleled customer support with AD Network. Our dedicated team is available 24/7 to assist you with your gaming queries and needs.`}
-                keywords={`AD Network Support, Customer Assistance, 24/7 Gaming Support, Gamer Help, Game Support Services`}
+                title="AD Gaming Support - 24/7 Customer Assistance for Gamers"
+                description={`Experience unparalleled customer support with AD Gaming. Our dedicated team is available 24/7 to assist you with your gaming queries and needs.`}
+                keywords={`AD Gaming Support, Customer Assistance, 24/7 Gaming Support, Gamer Help, Game Support Services`}
             />
             <div className='w-[100%] support'>
                 <div className="w-[90%] m-auto">
@@ -31,10 +31,10 @@ function Page() {
                     />
                     <div className='w-[100%] 800px:w-[65%] !mt-6 m-auto p-4 !mb-10'>
                         <p className='text-center'>
-                            Welcome to AD Network, where gaming becomes a lifestyle. Unleash your inner gamer and dive into our vast universe of games, memberships, and vouchers.
+                            Welcome to AD Gaming, where gaming becomes a lifestyle. Unleash your inner gamer and dive into our vast universe of games, memberships, and vouchers.
                             <br />
                             <br />
-                            Enter the AD Network realm, pulsating with the gaming community's rhythm. We are more than just a gaming hub—we&#39;re your trusted ally for the latest titles, games, memberships, and more. Step into our domain, where gaming transcends a hobby-it's a lifestyle.
+                            Enter the AD Gaming realm, pulsating with the gaming community's rhythm. We are more than just a gaming hub—we&#39;re your trusted ally for the latest titles, games, memberships, and more. Step into our domain, where gaming transcends a hobby-it's a lifestyle.
                         </p>
                     </div>
                     <div className='w-[100%] bg-black p-6'>
@@ -52,7 +52,7 @@ function Page() {
                         </div>
                         <div className='w-[100%] 800px:w-[45%] m-auto !mb-5 800px:mb-auto p-4'>
                             <p className='text-center 800px:text-left'>
-                            AD Network is an online platform that offers a wide range of gaming products at unbeatable prices. We are dedicated to providing gamers with access to affordable gaming copies, ensuring that everyone can enjoy their favorite games without breaking the bank. Our team of experts carefully curates our product database, ensuring that only the best and most popular items are available to our users. Whether you're looking for the latest AAA games, high-performance peripherals, or exclusive games, you'll find it all on ADNetwork. 
+                            AD Gaming is an online platform that offers a wide range of gaming products at unbeatable prices. We are dedicated to providing gamers with access to affordable gaming copies, ensuring that everyone can enjoy their favorite games without breaking the bank. Our team of experts carefully curates our product database, ensuring that only the best and most popular items are available to our users. Whether you're looking for the latest AAA games, high-performance peripherals, or exclusive games, you'll find it all on ADNetwork. 
                             <br />
                             <br />
                             We believe that gaming should be accessible to everyone, and our mission is to make that a reality. By offering competitive prices and a seamless shopping experience, we aim to empower gamers to level up their gaming experience without emptying their wallets.

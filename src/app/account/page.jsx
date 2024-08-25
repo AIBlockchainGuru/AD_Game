@@ -190,9 +190,9 @@ function Page() {
     return (
         <>
             <Heading 
-                title='Manage Your AD Network Account - Your Gaming Profile'
-                description='Personalize your gaming experience with your AD Network account. Manage your profile, track your purchases, and stay connected with the gaming community.'
-                keywords='AD Network Account, Manage Gaming Profile, Gamer Account, Personalized Gaming, Gaming Community'
+                title='Manage Your AD Gaming Account - Your Gaming Profile'
+                description='Personalize your gaming experience with your AD Gaming account. Manage your profile, track your purchases, and stay connected with the gaming community.'
+                keywords='AD Gaming Account, Manage Gaming Profile, Gamer Account, Personalized Gaming, Gaming Community'
             />
             {
                 loading ? (

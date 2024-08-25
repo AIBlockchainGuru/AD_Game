@@ -4,7 +4,7 @@ import React from 'react';
 
 function About() {
 
-    const DESCRIPTION_ONE = "Enter the AD Network realm, pulsating with the gaming community's rhythm. We are more than just a gaming hub-we're your trusted ally for the latest titles, games, memberships, and more. Step into our domain, where gaming transcends a hobby-it's a lifestyle.";
+    const DESCRIPTION_ONE = "Enter the AD Gaming realm, pulsating with the gaming community's rhythm. We are more than just a gaming hub-we're your trusted ally for the latest titles, games, memberships, and more. Step into our domain, where gaming transcends a hobby-it's a lifestyle.";
 
     const DESCRIPTION_TWO = "Experience the story of Basim, a cunning street thief with nightmarish visions, seeking answers and justice as he navigates the bustling streets of ninth-century Baghdad.";
 
@@ -17,7 +17,7 @@ function About() {
             <div className="items-center h-[100%] bg-black bg-opacity-45 text-white flex flex-col justify-center m-auto">
                 <div className="flex w-[90%] flex-col-reverse 800px:flex-row m-auto justify-between">
                     <div className="1100px:w-[45%] 800px:w-[55%] w-[90%] 1100px:pt-[200px]">
-                        <h1 className={`${staatliches.className} text-3xl 800px:text-4xl text-[800] mb-4`}>ABOUT AD NETWORK</h1>
+                        <h1 className={`${staatliches.className} text-3xl 800px:text-4xl text-[800] mb-4`}>ABOUT AD Gaming</h1>
                         <p className='text-medium mb-3'>{DESCRIPTION_ONE}</p>
                         <div className='flex gap-4'>
                             <div className="flex flex-col mr-4">

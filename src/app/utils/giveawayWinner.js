@@ -1,4 +1,4 @@
 export const giveawayWinner = {
-    name: `John Doe`,
+    name: `Kevin Terry`,
     imgUrl: `/assets/giveawayWinner.jpg`,
 }

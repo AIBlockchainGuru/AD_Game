@@ -15,8 +15,8 @@ const Questions = [
     },
     {
         id: "Q0013",
-        title: 'What makes ad network stand out?',
-        description: "AD Network stands out because of its dedication to the gaming community, offering exclusive deals, immersive content, and a platform to connect with like-minded gamers."
+        title: 'What makes AD Gaming stand out?',
+        description: "AD Gaming stands out because of its dedication to the gaming community, offering exclusive deals, immersive content, and a platform to connect with like-minded gamers."
     }
 ]
 

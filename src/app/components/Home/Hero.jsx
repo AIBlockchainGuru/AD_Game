@@ -8,7 +8,7 @@ import { styles } from '../../utils/styles'
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
-const HEADER1 = `Welcome to AD Network, where gaming becomes a lifestyle.`;
+const HEADER1 = `Welcome to AD Gaming, where gaming becomes a lifestyle.`;
 const HEADER2 = `Unleash your inner gamer and dive into our vast universe of games, memberships, and vouchers.`;
 
 const Hero = () => {

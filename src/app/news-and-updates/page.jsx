@@ -20,16 +20,16 @@ function Page() {
     return (
         <div className='w-[100%] h-[100%] pt-4 absoute top-0 news'>
             <Heading
-                title='AD Network News - Latest Gaming Trends & Updates'
-                description={`Stay ahead in the gaming world with AD Network News. Get the latest updates, trends, and insights in the gaming industry, tailored for true gamers.`}
-                keywords={`Gaming News, AD Network Updates, Latest Gaming Trends, Gamer Insights, Gaming Community News`}
+                title='AD Gaming News - Latest Gaming Trends & Updates'
+                description={`Stay ahead in the gaming world with AD Gaming News. Get the latest updates, trends, and insights in the gaming industry, tailored for true gamers.`}
+                keywords={`Gaming News, AD Gaming Updates, Latest Gaming Trends, Gamer Insights, Gaming Community News`}
             />
             <div className="w-[90%] h-[10vh] m-auto">
                 <Header />
             </div>
     
             <div className="w-[90%] m-auto">
-                <h1 className={`${staatliches.className} uppercase text-2xl font-medium 800px:text-2xl underline mt-5 ml-3`}>latest news on the ad network</h1>
+                <h1 className={`${staatliches.className} uppercase text-2xl font-medium 800px:text-2xl underline mt-5 ml-3`}>latest news on the AD Gaming</h1>
             </div>
             <div className="w-[95%] 800px:w-[90%] mt-6 flex flex-col gap-4 m-auto items-center 800px:items-start">
                 {

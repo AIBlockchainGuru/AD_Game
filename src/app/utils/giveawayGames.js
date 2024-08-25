@@ -2,7 +2,7 @@ export const giveawayGames = [
     {
         id: `ADNGA0011`,
         title: `Tomb Raider`,
-        thumbnailUrl: `/assets/adnetwork-10.jpg`,
+        thumbnailUrl: `/assets/ad-tombraider.jpeg`,
     },
     {
         id: `ADNGA0012`,

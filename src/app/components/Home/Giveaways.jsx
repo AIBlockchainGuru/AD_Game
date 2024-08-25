@@ -35,7 +35,7 @@ function Giveaways() {
                 <Divider className='w-[90%] bg-slate-50 mt-5 1100px:mt-7 h-[0.5px] mb-5'/>
     
                 <div className="mt-5 w-[100%] mb-9 flex flex-col items-center flex-wrap">
-                    <span className={`${staatliches.className} w-[90%] uppercase text-center mb-1 text-lg 800px:text-3xl text-[#7C8BD0]`}> Want to stay updated with Ad network? </span>
+                    <span className={`${staatliches.className} w-[90%] uppercase text-center mb-1 text-lg 800px:text-3xl text-[#7C8BD0]`}> Want to stay updated with AD Gaming? </span>
                     <span className={`${staatliches.className} w-[90%] uppercase text-center mb-3 text-lg 800px:text-3xl text-[#7C8BD0]`}> Sign up now! </span>
                 </div>
     

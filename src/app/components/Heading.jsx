@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Heading = ({ title = 'AD Network', description = '', keywords = '' }) => {
+const Heading = ({ title = 'AD Gaming', description = '', keywords = '' }) => {
     return(
         <>
             <title>{title}</title>
